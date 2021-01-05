@@ -75,7 +75,7 @@ public AlumniFragment(NestedFragmentListener listener)
 
         AlumniModelList = new ArrayList<>();
 
-
+        /*
         deptRef = database.getReference("Departments").child(str1);
         deptRef.keepSynced(true);
         DatabaseReference companyRef = deptRef.child("Companies");
@@ -117,7 +117,7 @@ public AlumniFragment(NestedFragmentListener listener)
 
             }
         });
-
+        */
 
         return v;
     }

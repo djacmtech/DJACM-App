@@ -1,11 +1,9 @@
 package com.imbuegen.alumniapp.Models;
 
-public class CommitteeMember {
-
+public class CommitteeMember
+{
 
     int photoId;
-
-
     String photoUrl;
     String name;
     String position;

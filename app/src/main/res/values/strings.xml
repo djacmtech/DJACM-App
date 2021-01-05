@@ -19,13 +19,13 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string-array name="Applicant_year" >
+    <string-array name="Applicant_year">
         <item>First Year</item>
         <item>Second Year</item>
         <item>Third Year</item>
         <item>Fourth Year</item>
     </string-array>
-    <string-array name="Applicant_Dept" >
+    <string-array name="Applicant_Dept">
         <item>Computer Engg</item>
         <item>Information Tech</item>
         <item>EXTC</item>
@@ -35,4 +35,8 @@
         <item>Chemical Engg</item>
         <item>Bioproduction Engg</item>
     </string-array>
+    <string name="committee_year_selection_title">Enter Year:</string>
+    <string name="submit_btn_txt">Submit</string>
+    <string name="faculty_title_text">Faculty</string>
+    <string name="committee_title_text">Core Members</string>
 </resources>

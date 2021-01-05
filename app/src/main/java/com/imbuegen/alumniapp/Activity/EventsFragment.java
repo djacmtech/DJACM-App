@@ -37,7 +37,7 @@ public class EventsFragment extends Fragment {
     List<EventModel> eventModelList;
     NestedFragmentListener listener;
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    //FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference eventsRef ;//= database.getReference("Departments").child(fbDeptKey);
     //DatabaseReference companyRef = deptRef.child("Companies");
     public EventsFragment(){}
@@ -49,7 +49,7 @@ public class EventsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
   View v=inflater.inflate(R.layout.activity_events,null);
-        eventsRef = database.getReference("notifications");
+        /*eventsRef = database.getReference("notifications");
 
         eventsListView  = v.findViewById(R.id.list_events);
 
@@ -74,7 +74,7 @@ public class EventsFragment extends Fragment {
         });
 
   //      BottomNavigationView navigation = v.findViewById(R.id.navigation);
-//        navigation.getMenu().findItem(R.id.navigation_events).setCheckable(true).setChecked(true);
+//        navigation.getMenu().findItem(R.id.navigation_events).setCheckable(true).setChecked(true);*/
         return v;
 
         //putextra me key eventName variable se store karna ,mene getextra me eventName key use kiya hai

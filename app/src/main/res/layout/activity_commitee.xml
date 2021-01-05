@@ -6,33 +6,75 @@
     android:layout_height="match_parent"
     tools:context=".Activity.CommiteeFragment">
 
-
-<!--    <android.support.v7.widget.RecyclerView-->
-<!--        android:id="@+id/member_rv1"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_above="@id/member_rv"></android.support.v7.widget.RecyclerView>-->
-
-
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/member_rv"
+    <LinearLayout
+        android:id="@+id/faculty_div"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-<!--        android:layout_above="@id/navigation"-->
-       </android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
 
+        <TextView
+            android:id="@+id/faculty_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/faculty_title_text"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            />
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/faculty_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            />
 
-<!--    <android.support.design.widget.BottomNavigationView-->
-<!--        android:id="@+id/navigation"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="start"-->
-<!--        android:background="@color/White"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        app:menu="@menu/bottom_menu" />-->
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/committee_div"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/faculty_div"
+        android:layout_marginTop="16dp"
+        >
+
+        <RelativeLayout
+            android:title="@+id/year_selection_div"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/committee_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/committee_title_text"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                />
+
+            <Spinner
+                android:id="@+id/committee_year_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="@color/newUiArrowColor"
+                />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/committee_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal"
+            />
+
+    </LinearLayout>
 
 
 </RelativeLayout>

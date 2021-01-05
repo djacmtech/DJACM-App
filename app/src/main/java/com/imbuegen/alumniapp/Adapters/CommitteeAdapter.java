@@ -1,65 +1,76 @@
 package com.imbuegen.alumniapp.Adapters;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.imbuegen.alumniapp.Models.CommitteeMember;
-import com.squareup.picasso.Picasso;
 import com.imbuegen.alumniapp.R;
-import java.util.List;
+import com.imbuegen.alumniapp.Service.CommitteePhotoDownloader;
 
-public class CommitteeAdapter extends RecyclerView.Adapter<CommitteeAdapter.ViewHolder> {
+import java.util.ArrayList;
 
+public class CommitteeAdapter extends RecyclerView.Adapter<CommitteeAdapter.ViewHolder>
+{
+    private ArrayList<CommitteeMember> members; //The committee members to be displayed
 
-    List<CommitteeMember> list;
-    Context context;
+    class ViewHolder extends RecyclerView.ViewHolder
+    {
+        private CardView cardView; //The card view used for displaying the details
 
-    public CommitteeAdapter(List<CommitteeMember> list, Context context) {
-        this.list = list;
-        this.context = context;
+        public ViewHolder(@NonNull View itemView)
+        {
+            super(itemView);
+
+            cardView = (CardView)itemView;
+        }
     }
 
+    public CommitteeAdapter(ArrayList<CommitteeMember> mems)
+    {
+        members = mems;
+    }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        return new ViewHolder(inflater.inflate(R.layout.comittee_member_item,viewGroup,false));
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
+    {
+        //Inflating the cardview
+        View cardView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.comittee_member_item, viewGroup,false);
+
+        //Initializing the view holder
+        ViewHolder viewHolder = new ViewHolder(cardView);
+
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i)
+    {
+        RelativeLayout cardViewLayout = viewHolder.cardView.findViewById(R.id.committee_card_layout); //Getting the relative layout located in the cardview
 
-        CommitteeMember m = list.get(i);
+        //Displaying member name
+        ((TextView)cardViewLayout.findViewById(R.id.committee_member_name)).setText(members.get(i).getName());
 
-        ImageView iv = viewHolder.itemView.findViewById(R.id.member_image);
-        TextView  nameTv = viewHolder.itemView.findViewById(R.id.name_tv);
-        TextView  positionTv = viewHolder.itemView.findViewById(R.id.position_tv);
+        //Displaying the member position
+        ((TextView)cardViewLayout.findViewById(R.id.committee_member_position)).setText(members.get(i).getPosition());
 
-        if(m.getPhotoUrl() != null && !m.getPhotoUrl().isEmpty())
-            Picasso.get().load(m.getPhotoUrl()).into(iv);
-        else iv.setImageResource(m.getPhotoId());
-
-        nameTv.setText(m.getName());
-        positionTv.setText(m.getPosition());
-
+        //Downloading and displaying the member photo
+        ImageView imageView = cardViewLayout.findViewById(R.id.committee_member_photo_card).findViewById(R.id.committee_member_photo);
+        CommitteePhotoDownloader photoDownloader = new CommitteePhotoDownloader(imageView);
+        photoDownloader.execute(members.get(i).getPhotoUrl());
     }
 
     @Override
-    public int getItemCount() {
-        return this.list.size();
+    public int getItemCount()
+    {
+        return members.size();
     }
 
-
-    public class ViewHolder  extends  RecyclerView.ViewHolder{
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-        }
-    }
 }

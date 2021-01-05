@@ -1,11 +1,10 @@
 package com.imbuegen.alumniapp.Adapters;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.view.ViewGroup;
+
 import com.imbuegen.alumniapp.Activity.AlumniFragment;
 import com.imbuegen.alumniapp.Activity.AlumniInfoFragment;
 import com.imbuegen.alumniapp.Activity.ApplicationForm;
@@ -18,7 +17,6 @@ import com.imbuegen.alumniapp.Activity.InternshipCompany;
 import com.imbuegen.alumniapp.Activity.InternshipDetails;
 import com.imbuegen.alumniapp.IfFragment;
 import com.imbuegen.alumniapp.NestedFragmentListener;
-import com.imbuegen.alumniapp.Screen1Fragment;
 import com.imbuegen.alumniapp.Screen2Fragment;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -121,18 +119,18 @@ public class StudentViewPagerAdaptor extends FragmentStatePagerAdapter {
                 if(Department==null)
                 Department= new DepartmentsFragment(listener);
                 return Department;
-
             case 1:
                 if(EventFrag==null)
                  EventFrag= new EventsFragment(listener);
                  return EventFrag;
-
             case 2:
                 return new CommiteeFragment();
             case 3:
                 if(IF==null)
                     IF= new IfFragment(listener);
                 return IF;
+            case 4:
+                return new CommiteeFragment();
 
             default:return null;
         }

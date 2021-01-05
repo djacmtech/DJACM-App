@@ -10,6 +10,6 @@ public class OfflineClass extends Application {
     public void onCreate() {
         super.onCreate();
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
     }
 }

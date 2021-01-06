@@ -1,9 +1,11 @@
 package com.imbuegen.alumniapp.Activity;
 
+import android.graphics.PorterDuff;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -15,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.MultiAutoCompleteTextView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -33,6 +37,7 @@ import java.util.List;
 import su.j2e.rvjoiner.JoinableAdapter;
 import su.j2e.rvjoiner.JoinableLayout;
 import su.j2e.rvjoiner.RvJoiner;import com.imbuegen.alumniapp.R;
+import com.imbuegen.alumniapp.Service.CommitteePhotoDownloader;
 
 import static android.support.v7.widget.RecyclerView.HORIZONTAL;
 
@@ -44,7 +49,8 @@ public class CommiteeFragment extends Fragment
     private final int CURR_YEAR = Calendar.getInstance().get(Calendar.YEAR); //The current year
 
     private ArrayList<CommitteeMember> committeeMembers; //List of the current year committee members
-    private CommitteeAdapter adapter; //Adapter for the recycler view
+    private RecyclerView committeeRecyclerView; //The recycler view used for displaying the committee members
+    private ProgressBar committeeLoadingBar;
 
     private Spinner.OnItemSelectedListener spinnerItemSelectedListener = new Spinner.OnItemSelectedListener()
     {
@@ -76,12 +82,15 @@ public class CommiteeFragment extends Fragment
         //Initializing the faculty recycler view
         displayFaculty(fragmentView);
 
+        //Initializing the loading bar
+        committeeLoadingBar = fragmentView.findViewById(R.id.committee_loading_progressbar);
+        committeeLoadingBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(getActivity(), R.color.White), PorterDuff.Mode.SRC_IN);
+
         //Initializing the recycler view
         committeeMembers = new ArrayList<CommitteeMember>();
-        adapter = new CommitteeAdapter(committeeMembers);
-        RecyclerView recyclerView = fragmentView.findViewById(R.id.committee_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(adapter);
+        committeeRecyclerView = fragmentView.findViewById(R.id.committee_recycler_view);
+        committeeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        committeeRecyclerView.setAdapter(new CommitteeAdapter(committeeMembers, false));
 
         //Initialzing spinner
         ArrayAdapter<String> years = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item);
@@ -100,9 +109,16 @@ public class CommiteeFragment extends Fragment
 
     private void displayCommitteeMembers(String year)
     {
-        //Retrieving data from the database
-        dbRef.child(year).addListenerForSingleValueEvent(new ValueEventListener()
-        {
+        //Displaying the progress bar
+        committeeLoadingBar.setVisibility(View.VISIBLE);
+
+        //Hiding the recycler view
+        committeeRecyclerView.setVisibility(View.INVISIBLE);
+
+        final ArrayList<String> photoUrls = new ArrayList<String>(); //The urls for the committee member pics
+
+        //Querying the database
+        dbRef.child(year).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
@@ -112,26 +128,37 @@ public class CommiteeFragment extends Fragment
                 //Adding the new members to the list
                 for(DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
-                    CommitteeMember member = new CommitteeMember(snapshot.child("PhotoUrl").getValue().toString(), snapshot.child("Name").getValue().toString(), snapshot.child("Position").getValue().toString());
+                    CommitteeMember member = new CommitteeMember(snapshot.child("Name").getValue().toString(), snapshot.child("Position").getValue().toString());
+                    photoUrls.add(snapshot.child("PhotoUrl").getValue().toString());
                     committeeMembers.add(member);
                 }
 
-                //Updating the adapter
-                adapter.notifyDataSetChanged();
+                //Downloading the committee pics
+                CommitteePhotoDownloader photoDownloader = new CommitteePhotoDownloader(committeeMembers, CommiteeFragment.this, false);
+                photoDownloader.execute(photoUrls.toArray(new String[0]));
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError)
             {
-                //Showing the error message
-                Toast.makeText(getActivity(), "Unable to retrieve committee info : " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                //Showing error message
+                Toast.makeText(getActivity(), String.format("Unable to retrieve member info : %s", databaseError.getMessage()), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void displayFaculty(View fragmentView)
     {
+        //Displaying the progress bar
+        ProgressBar pb = (ProgressBar)fragmentView.findViewById(R.id.faculty_loading_progressbar);
+        pb.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(getActivity(), R.color.White), PorterDuff.Mode.SRC_IN);
+        pb.setVisibility(View.VISIBLE);
+
+        //Hiding the recycler view
+        ((RecyclerView)fragmentView.findViewById(R.id.faculty_recycler_view)).setVisibility(View.INVISIBLE);
+
         final ArrayList<CommitteeMember> facultyMembers = new ArrayList<CommitteeMember>(); //List of the faculty members
+        final ArrayList<String> photoUrls = new ArrayList<String>(); //The urls for the faculty pics
         final View parentView = fragmentView; //The parent view
 
         //Querying the database
@@ -142,17 +169,22 @@ public class CommiteeFragment extends Fragment
                 //Adding the faculty to the list
                 for(DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
-                    CommitteeMember faculty = new CommitteeMember(snapshot.child("PhotoUrl").getValue().toString(), snapshot.child("Name").getValue().toString(), snapshot.child("Position").getValue().toString());
+                    CommitteeMember faculty = new CommitteeMember(snapshot.child("Name").getValue().toString(), snapshot.child("Position").getValue().toString());
+                    photoUrls.add(snapshot.child("PhotoUrl").getValue().toString());
                     facultyMembers.add(faculty);
                 }
 
                 //Creating the adapter
-                CommitteeAdapter facultyAdapter = new CommitteeAdapter(facultyMembers);
+                CommitteeAdapter facultyAdapter = new CommitteeAdapter(facultyMembers, true);
 
                 //Initialzing the recycler view
                 RecyclerView facultyRecyclerView = parentView.findViewById(R.id.faculty_div).findViewById(R.id.faculty_recycler_view);
                 facultyRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
                 facultyRecyclerView.setAdapter(facultyAdapter);
+
+                //Downloading the faculty pics
+                CommitteePhotoDownloader facultyPhotoDownloader = new CommitteePhotoDownloader(facultyMembers, CommiteeFragment.this, true);
+                facultyPhotoDownloader.execute(photoUrls.toArray(new String[0]));
             }
 
             @Override
@@ -162,5 +194,32 @@ public class CommiteeFragment extends Fragment
                 Toast.makeText(getActivity(), String.format("Unable to retrieve faculty info : %s", databaseError.getMessage()), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void RecyclerViewUpdated(boolean isFaculty)
+    {
+        if(!isFaculty)
+        {
+            //Hiding the progress bar
+            committeeLoadingBar.setVisibility(View.INVISIBLE);
+
+            //Showing the recycler view
+            committeeRecyclerView.setVisibility(View.VISIBLE);
+
+            //Updating the adapter
+            committeeRecyclerView.getAdapter().notifyDataSetChanged();
+        }
+        else
+        {
+            //Hiding the progress bar
+            ((ProgressBar)getView().findViewById(R.id.faculty_loading_progressbar)).setVisibility(View.INVISIBLE);
+
+            //Displaying the recycler view
+            RecyclerView rv = (RecyclerView)getView().findViewById(R.id.faculty_recycler_view);
+            rv.setVisibility(View.VISIBLE);
+
+            //Updating the adapter
+            rv.getAdapter().notifyDataSetChanged();
+        }
     }
 }

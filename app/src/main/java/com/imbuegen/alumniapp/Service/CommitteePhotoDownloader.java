@@ -4,54 +4,72 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.ImageView;
-
+import com.imbuegen.alumniapp.Models.CommitteeMember;
 import com.imbuegen.alumniapp.R;
+import com.imbuegen.alumniapp.Activity.CommiteeFragment;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
-public class CommitteePhotoDownloader extends AsyncTask<String,Void, Bitmap>
+public class CommitteePhotoDownloader extends AsyncTask<String,Void, Void>
 {
-    private ImageView imageView; //The image view to be used for displaying the photo
+    private ArrayList<CommitteeMember> members; //List of the members whose photos are to be updated
+    private CommiteeFragment fragment; //The committee fragment
+    private boolean isFaculty; //Tells whether the downloader is downloading faculty pics
 
-    public CommitteePhotoDownloader(ImageView imageView)
+    public CommitteePhotoDownloader(ArrayList<CommitteeMember> members, CommiteeFragment fragment, boolean isFaculty)
     {
-        this.imageView = imageView;
+        this.members = members;
+        this.fragment = fragment;
+        this.isFaculty = isFaculty;
     }
 
     @Override
-    protected Bitmap doInBackground(String... uris)
+    protected Void doInBackground(String... uris)
     {
-        try
+        for(int a = 0; a < uris.length; ++a)
         {
-            URL urlConnection = new URL(uris[0]);
-            HttpURLConnection httpConnection = (HttpURLConnection)urlConnection.openConnection();
-            httpConnection.setDoInput(true);
-            httpConnection.connect();
+            URL urlConnection = null;
+            HttpURLConnection httpConnection = null;
+            InputStream stream = null;
+            try
+            {
+                urlConnection = new URL(uris[a]);
+                httpConnection = (HttpURLConnection) urlConnection.openConnection();
+                httpConnection.setDoInput(true);
+                httpConnection.connect();
 
-            InputStream stream = httpConnection.getInputStream();
-            Bitmap downloadedImage = BitmapFactory.decodeStream(stream);
-            return downloadedImage;
-        }
-        catch(Exception e)
-        {
-            Log.e("IMG_DWLD", e.getMessage());
+                stream = httpConnection.getInputStream();
+                Bitmap downloadedImage = BitmapFactory.decodeStream(stream);
+                members.get(a).setPhoto(downloadedImage);
+            }
+            catch (Exception e)
+            {
+                Log.e("IMG_DWLD", e.getMessage());
+                members.get(a).setPhoto(BitmapFactory.decodeResource(fragment.getContext().getResources(), R.drawable.default_committee_profile_pic));
+            }
+            finally
+            {
+                try
+                {
+                    stream.close();
+                }
+                catch(IOException exe)
+                {
+
+                }
+            }
         }
 
         return null;
     }
 
     @Override
-    protected void onPostExecute(Bitmap result)
+    protected void onPostExecute(Void result)
     {
-        if(result != null)
-        {
-            //Displaying the image
-            imageView.setImageBitmap(result);
-        }
-        else
-            imageView.setImageResource(R.drawable.default_committee_profile_pic); //Setting the default profile pic
+        fragment.RecyclerViewUpdated(isFaculty);
     }
 }

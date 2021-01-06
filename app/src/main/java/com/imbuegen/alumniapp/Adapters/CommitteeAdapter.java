@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,7 +19,8 @@ import java.util.ArrayList;
 
 public class CommitteeAdapter extends RecyclerView.Adapter<CommitteeAdapter.ViewHolder>
 {
-    private ArrayList<CommitteeMember> members; //The committee members to be displayed
+    private ArrayList<CommitteeMember> members; //The committee members to be
+    private boolean isFaculty; //Whether the adapter is used to display faculty members in horizontal fashion
 
     class ViewHolder extends RecyclerView.ViewHolder
     {
@@ -32,9 +34,10 @@ public class CommitteeAdapter extends RecyclerView.Adapter<CommitteeAdapter.View
         }
     }
 
-    public CommitteeAdapter(ArrayList<CommitteeMember> mems)
+    public CommitteeAdapter(ArrayList<CommitteeMember> mems, boolean isFac)
     {
         members = mems;
+        isFaculty = isFac;
     }
 
     @NonNull
@@ -43,6 +46,12 @@ public class CommitteeAdapter extends RecyclerView.Adapter<CommitteeAdapter.View
     {
         //Inflating the cardview
         View cardView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.comittee_member_item, viewGroup,false);
+
+        //Making changes to the card view in case of displaying faculty
+        if(isFaculty)
+        {
+            cardView.setLayoutParams(new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.MATCH_PARENT));
+        }
 
         //Initializing the view holder
         ViewHolder viewHolder = new ViewHolder(cardView);
@@ -61,10 +70,8 @@ public class CommitteeAdapter extends RecyclerView.Adapter<CommitteeAdapter.View
         //Displaying the member position
         ((TextView)cardViewLayout.findViewById(R.id.committee_member_position)).setText(members.get(i).getPosition());
 
-        //Downloading and displaying the member photo
-        ImageView imageView = cardViewLayout.findViewById(R.id.committee_member_photo_card).findViewById(R.id.committee_member_photo);
-        CommitteePhotoDownloader photoDownloader = new CommitteePhotoDownloader(imageView);
-        photoDownloader.execute(members.get(i).getPhotoUrl());
+        //Displaying the member photo
+        ((ImageView)cardViewLayout.findViewById(R.id.committee_member_photo)).setImageBitmap(members.get(i).getPhoto());
     }
 
     @Override

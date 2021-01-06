@@ -28,7 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="default_committee_profile_pic" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="logout_btn_icon" />
                             <entry key="sourceFile" value="E:\Android Studio\Projects\DJACM-App" />
                           </map>
                         </option>

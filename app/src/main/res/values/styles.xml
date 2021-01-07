@@ -48,14 +48,19 @@
         <item name="colorPrimary">@color/newColorPrimary</item>
         <item name="colorPrimaryDark">@color/newColorPrimary</item>
         <item name="colorAccent">@color/newColorPrimary</item>
+        <item name="actionBarStyle">@style/NewThemeActionBar</item>
         <item name="android:windowBackground">@color/newColorPrimary</item>
         <item name="android:textColor">@color/White</item>
-        <item name="android:actionBarStyle">@style/NewTheme.ActionBar</item>
     </style>
 
-    <style name="NewTheme.ActionBar" parent="Widget.AppCompat.ActionBar.Solid">
-        <item name="elevation">80dp</item>
-        <item name="android:textColor">#ff0000</item>
+    <style name="NewThemeActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="titleTextStyle">@style/NewThemeActionBarTitleText</item>
+    </style>
+
+    <style name="NewThemeActionBarTitleText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/White</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

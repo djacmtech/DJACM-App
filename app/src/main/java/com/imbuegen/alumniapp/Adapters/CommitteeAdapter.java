@@ -51,6 +51,7 @@ public class CommitteeAdapter extends RecyclerView.Adapter<CommitteeAdapter.View
         if(isFaculty)
         {
             cardView.setLayoutParams(new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.MATCH_PARENT));
+            ((TextView)cardView.findViewById(R.id.committee_member_name)).setTextSize(16); //Decreasing text size
         }
 
         //Initializing the view holder

@@ -32,6 +32,7 @@
         app:menu="@menu/bottom_menu"
         app:itemIconTint="@drawable/bottomnav_states"
         app:itemTextColor="@drawable/bottomnav_states"
+        app:labelVisibilityMode="labeled"
         />
     </LinearLayout>
 

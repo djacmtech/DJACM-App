@@ -43,7 +43,7 @@ public void setActivity(Activity a) {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        itemID = R.id.navigation_alumni;
+        itemID = R.id.navigation_home;
         navigation = findViewById(R.id.navigation);
         //setUpNavigation();
         viewPager=findViewById(R.id.studentviewpager);
@@ -153,7 +153,7 @@ public void setActivity(Activity a) {
 
 
                 Fragment fragment = null;
-                if (menuItem.getItemId() == R.id.navigation_alumni)
+                if (menuItem.getItemId() == R.id.navigation_home)
                 {
                     viewPager.setCurrentItem(0);
                     //fragment =adapter.getItem(0);
@@ -168,7 +168,7 @@ public void setActivity(Activity a) {
                     //fragment = adapter.getItem(2);
                     viewPager.setCurrentItem(2);
                 }
-                if (menuItem.getItemId() == R.id.navigation_IF) {
+                if (menuItem.getItemId() == R.id.navigation_alumni) {
                     viewPager.setCurrentItem(3);
                 }
                 return false;            //loadFragment(fragment);

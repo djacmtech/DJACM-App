@@ -4,13 +4,13 @@
 
 
     <item
-        android:id="@+id/navigation_alumni"
-        android:icon="@drawable/ic_profile"
-        android:title="Alumni" />
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/bottomnav_home"
+        android:title="Home" />
 
     <item
         android:id="@+id/navigation_events"
-        android:icon="@drawable/ic_announcement_black_24dp"
+        android:icon="@drawable/bottomnav_event"
         android:title="Events" />
 
     <item
@@ -18,9 +18,9 @@
         android:icon="@drawable/ic_people_black_24dp"
         android:title="Committee" />
     <item
-        android:id="@+id/navigation_IF"
-        android:icon="@drawable/ic_people_black_24dp"
-        android:title="IF" />
+        android:id="@+id/navigation_alumni"
+        android:icon="@drawable/bottomnav_alumni"
+        android:title="Alumni" />
 
 <!--    <item-->
 <!--        android:id="@+id/navigation_internship"-->

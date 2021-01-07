@@ -70,6 +70,6 @@ public class CommitteePhotoDownloader extends AsyncTask<String,Void, Void>
     @Override
     protected void onPostExecute(Void result)
     {
-        fragment.RecyclerViewUpdated(isFaculty);
+        //fragment.RecyclerViewUpdated(isFaculty);
     }
 }

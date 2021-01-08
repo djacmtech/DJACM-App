@@ -109,7 +109,7 @@ public class CommiteeFragment extends Fragment
         ArrayAdapter<String> years = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item);
         years.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         //Adding the years to be displayed to the array adapter
-        for(int a = START_YEAR; a <= CURR_YEAR; ++a)
+        for(int a = START_YEAR; a < CURR_YEAR; ++a)
         {
             years.add((a + "-" + (a - 2000 + 1)));
         }
@@ -118,6 +118,15 @@ public class CommiteeFragment extends Fragment
         yearSpinner.setOnItemSelectedListener(spinnerItemSelectedListener);
 
         return fragmentView;
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+
+        //Setting the initial year
+        ((Spinner)getView().findViewById(R.id.committee_year_spinner)).setSelection(CURR_YEAR - START_YEAR - 1);
     }
 
     private void displayCommitteeMembers(String year)

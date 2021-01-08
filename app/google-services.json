@@ -1,37 +1,76 @@
 {
   "project_info": {
-    "project_number": "817724516663",
-    "project_id": "acm-app-409df",
-    "storage_bucket": "acm-app-409df.appspot.com",
-    "firebase_url": "https://acm-app-409df-default-rtdb.firebaseio.com/"
+    "project_number": "814508685135",
+    "firebase_url": "https://alumniapp-21db1.firebaseio.com",
+    "project_id": "alumniapp-21db1",
+    "storage_bucket": "alumniapp-21db1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:817724516663:android:710b27d885d0844d61d2b2",
+        "mobilesdk_app_id": "1:814508685135:android:6f1544867b8947a9",
         "android_client_info": {
           "package_name": "com.imbuegen.alumniapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "817724516663-6e5bithuf8eemdl5bc75dhuc6de2ror6.apps.googleusercontent.com",
+          "client_id": "814508685135-5tih3603ejb406cs1p3mra4cu3k4l9m6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.imbuegen.alumniapp",
+            "certificate_hash": "0e8f569aed78a76fbd60cfbe455ed2a5c8051869"
+          }
+        },
+        {
+          "client_id": "814508685135-9pvhghr7poj90lf4d389eu43h4tihv7k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.imbuegen.alumniapp",
+            "certificate_hash": "aefe3cde75d3e9c9337c6d3162f2d274ead1410d"
+          }
+        },
+        {
+          "client_id": "814508685135-r728l9toc5r19is271m3cqa5pchqr696.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.imbuegen.alumniapp",
+            "certificate_hash": "b8654e58f026772173896b6ee1b0352006cce86c"
+          }
+        },
+        {
+          "client_id": "814508685135-vcvtfnntgje5v4d37t41552i25eiuour.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.imbuegen.alumniapp",
+            "certificate_hash": "a57f00183d7bdb1b06988d170b163585183abc0d"
+          }
+        },
+        {
+          "client_id": "814508685135-l1kdpa9dth1dd9k8mdsdsjgspvvi18lg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB_KdFGHKh8R0UOHEs0TvzUzUFem8nWsrk"
+          "current_key": "AIzaSyA1CyBfx2hDC6XtTa8A_HLcGC2zgihO_2U"
         }
       ],
       "services": {
+        "analytics_service": {
+          "status": 1
+        },
         "appinvite_service": {
+          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "817724516663-6e5bithuf8eemdl5bc75dhuc6de2ror6.apps.googleusercontent.com",
+              "client_id": "814508685135-l1kdpa9dth1dd9k8mdsdsjgspvvi18lg.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
+        },
+        "ads_service": {
+          "status": 2
         }
       }
     }

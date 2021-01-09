@@ -37,7 +37,6 @@ import com.imbuegen.alumniapp.Models.CommitteeMember;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 
 import su.j2e.rvjoiner.JoinableAdapter;
 import su.j2e.rvjoiner.JoinableLayout;
@@ -129,6 +128,26 @@ public class CommiteeFragment extends Fragment
         ((Spinner)getView().findViewById(R.id.committee_year_spinner)).setSelection(CURR_YEAR - START_YEAR - 1);
     }
 
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+
+        //Cancelling committee download requests
+        for(Target target : commPicassoDownloadTargets.keySet())
+        {
+            Picasso.get().cancelRequest(target);
+        }
+        commPicassoDownloadTargets.clear();
+
+        //Cancelling faculty download requests
+        for(Target target : facPicassoDownloadTargets.keySet())
+        {
+            Picasso.get().cancelRequest(target);
+        }
+        facPicassoDownloadTargets.clear();
+    }
+
     private void displayCommitteeMembers(String year)
     {
         //Displaying the progress bar
@@ -150,9 +169,6 @@ public class CommiteeFragment extends Fragment
             {
                 //Clearing the committee members list
                 committeeMembers.clear();
-
-                //Clearing the download processess
-                //commPicassoDownloadTargets.clear();
 
                 //Adding the new members to the list
                 for(DataSnapshot snapshot : dataSnapshot.getChildren())

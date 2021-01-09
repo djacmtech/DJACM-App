@@ -150,8 +150,6 @@ public void setActivity(Activity a) {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-
-
                 Fragment fragment = null;
                 if (menuItem.getItemId() == R.id.navigation_home)
                 {

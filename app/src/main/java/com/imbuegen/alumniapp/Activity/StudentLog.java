@@ -37,7 +37,9 @@ public class StudentLog extends AppCompatActivity {
     private static FirebaseAuth firebaseAuth;
     private static ProgressDialog progressDialog1;
     public static final String SH_PRF="shared_prefs";
-    SignInButton google_btn;
+  //  SignInButton google_btn;
+    private Button google_btn;
+    private String buttontext ="Sign in with Google";
     private final static int RC_SIGN_IN=1;
     private GoogleSignInClient mGoogleSignInClient;
 
@@ -50,19 +52,28 @@ public class StudentLog extends AppCompatActivity {
         progressDialog1 = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
-//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestEmail()
-//                .build();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken("814508685135-l1kdpa9dth1dd9k8mdsdsjgspvvi18lg.apps.googleusercontent.com")
+                .requestEmail()
+                .build();
+//        TextView textView = (TextView) google_btn.getChildAt(0);
+//        textView.setText(buttontext);
+        getSupportActionBar().hide();
+        mGoogleSignInClient = GoogleSignIn.getClient(this,gso );
+        google_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signIn();
+            }
+        });
 
-//        mGoogleSignInClient = GoogleSignIn.getClient(this,gso );
-//        google_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                signIn();
-//            }
-//        });
-
-
+        TextView forgot_password_tv = findViewById(R.id.forgot_password_tv);
+        forgot_password_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StudentLog.this,ResetPassword.class));
+            }
+        });
         if(user!=null){
             finish();
             startActivity(new Intent(StudentLog.this,BaseActivity.class));
@@ -95,48 +106,48 @@ public class StudentLog extends AppCompatActivity {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-//        if (requestCode == RC_SIGN_IN) {
-//            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-//            try {
-//                Toast.makeText(StudentLog.this,"SIGN IN SUCCESSFUL",Toast.LENGTH_SHORT).show();
-//                // ...
-//                GoogleSignInAccount account = task.getResult(ApiException.class);
-//                firebaseAuthWithGoogle(account);
-//            } catch (ApiException e) {
-//                Toast.makeText(StudentLog.this,"SIGN IN UNSUCCESSFUL",Toast.LENGTH_SHORT).show();
-//                // ...
-//            }
-//        }
-//    }
-//    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-//        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-//
-//        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-//        firebaseAuth.signInWithCredential(credential)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            // Sign in success, update UI with the signed-in user's information
-//                            Toast.makeText(StudentLog.this,"SUCCESSFUL",Toast.LENGTH_SHORT).show();
-//                            FirebaseUser user = firebaseAuth.getCurrentUser();
-//                            updateUI(user);
-//                        } else {
-//                            // If sign in fails, display a message to the user.
-//                            Toast.makeText(StudentLog.this,"UNSUCCESSFUL",Toast.LENGTH_SHORT).show();
-//                            Snackbar.make(findViewById(R.id.main_layout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
-//
-//                        }
-//
-//                        // ...
-//                    }
-//                });
-//    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                Toast.makeText(StudentLog.this,"Sign in Successful",Toast.LENGTH_SHORT).show();
+                // ...
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account);
+                startActivity(new Intent(StudentLog.this, BaseActivity.class));
+            } catch (ApiException e) {
+                Toast.makeText(StudentLog.this,"SIGN IN UNSUCCESSFUL",Toast.LENGTH_SHORT).show();
+                Log.v("Error", String.valueOf(e));
+                // ...
+            }
+        }
+    }
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        Log.d("CHECK", "firebaseAuthWithGoogle:" + acct.getId());
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        firebaseAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Toast.makeText(StudentLog.this,"SUCCESSFUL",Toast.LENGTH_SHORT).show();
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                           // updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(StudentLog.this,"UNSUCCESSFUL",Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    }
+                });
+    }
 
     public void views(){
         btn = (Button)findViewById(R.id.logins);
@@ -149,6 +160,7 @@ public class StudentLog extends AppCompatActivity {
         Boolean emailflag=((FirebaseUser) firebaseUser).isEmailVerified();
         if(emailflag){
             finish();
+            Toast.makeText(StudentLog.this,"Sign in Successful",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(StudentLog.this, BaseActivity.class));
         }else{
             Toast.makeText(StudentLog.this,"Verify Your Email",Toast.LENGTH_SHORT).show();
@@ -175,8 +187,6 @@ public class StudentLog extends AppCompatActivity {
                     progressDialog1.dismiss();
 
                 }
-
-
             }
         });
 

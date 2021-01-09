@@ -5,11 +5,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
+import android.widget.GridView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,28 +31,32 @@ public class DepartmentsFragment extends Fragment// implements NestedFragmentLis
     static NestedFragmentListener listener;
     ArrayList<Department> deptList;
     RecyclerView deptListView;
+    GridView deptGridLayout;
     MyDeptAdapter myDeptAdapter;
-    public DepartmentsFragment()
-    { }
+
+    public DepartmentsFragment() {
+    }
+
     @SuppressLint("ValidFragment")
-    public DepartmentsFragment(NestedFragmentListener listener)
-    {this.listener=listener;
+    public DepartmentsFragment(NestedFragmentListener listener) {
+        this.listener = listener;
 
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-            View v = inflater.inflate(R.layout.fragmentlayout, null);
-            deptList = new ArrayList<>();
-            deptListView = v.findViewById(R.id.list_depts);
-            instantiateDeptList();
-            loadData();
-             return v;
-        }
+        // fragment layout === list of departments on alumni page
+        View v = inflater.inflate(R.layout.fragmentlayout, null);
+        deptList = new ArrayList<>();
+        deptListView = v.findViewById(R.id.list_depts);
+     //   deptGridLayout = v.findViewById(R.id.list_depts);
 
 
+        instantiateDeptList();
+        loadData();
+        return v;
+    }
 
 
     private void loadData() {
@@ -64,12 +72,14 @@ public class DepartmentsFragment extends Fragment// implements NestedFragmentLis
 
     private void instantiateDeptList() {
 
-        myDeptAdapter = new MyDeptAdapter(getContext(), deptList,listener);
-
+        myDeptAdapter = new MyDeptAdapter(getContext(), deptList, listener);
+//        deptGridLayout.setAdapter((ListAdapter) myDeptAdapter);
 
 
         deptListView.setAdapter(myDeptAdapter);
-        deptListView.setLayoutManager(new LinearLayoutManager(getContext()));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+        deptListView.setLayoutManager(gridLayoutManager);
+     //   deptListView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 }
 

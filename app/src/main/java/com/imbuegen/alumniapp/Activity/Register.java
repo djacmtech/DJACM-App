@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +22,7 @@ import com.imbuegen.alumniapp.R;
 public class Register extends AppCompatActivity {
 
     private static Button create_stud;
-    private static Button create_alumini;
+  //  private static Button create_alumini;
     private static EditText pas;
     private static EditText email;
     private static ProgressDialog progressDialog;
@@ -36,39 +37,39 @@ public class Register extends AppCompatActivity {
         diffviews();
         progressDialog = new ProgressDialog(Register.this);
         firebaseAuth=FirebaseAuth.getInstance();
-
-        create_alumini.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (validate()){
-
-
-                    String useremail = email.getText().toString().trim();
-                    String passme = pas.getText().toString().trim();
-                    progressDialog.setMessage("Creating Your Account");
-                    progressDialog.show();
-                    firebaseAuth.createUserWithEmailAndPassword(useremail,passme).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()){
-                                progressDialog.dismiss();
-                                sendemailverification();
-                                    SharedPreferences sharedPreferences=getSharedPreferences(SH_PRF,MODE_PRIVATE);
-                                    SharedPreferences.Editor editor=sharedPreferences.edit();
-                                    editor.putString(Reg_as,"ALUMNI");
-                                    editor.apply();
-
-                            }
-                            else{
-                                progressDialog.dismiss();
-                                Toast.makeText(Register.this,"Registration Failed",Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                }
-
-            }
-        });
+//
+//        create_alumini.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (validate()){
+//
+//
+//                    String useremail = email.getText().toString().trim();
+//                    String passme = pas.getText().toString().trim();
+//                    progressDialog.setMessage("Creating Your Account");
+//                    progressDialog.show();
+//                    firebaseAuth.createUserWithEmailAndPassword(useremail,passme).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<AuthResult> task) {
+//                            if(task.isSuccessful()){
+//                                progressDialog.dismiss();
+//                                sendemailverification();
+//                                    SharedPreferences sharedPreferences=getSharedPreferences(SH_PRF,MODE_PRIVATE);
+//                                    SharedPreferences.Editor editor=sharedPreferences.edit();
+//                                    editor.putString(Reg_as,"ALUMNI");
+//                                    editor.apply();
+//
+//                            }
+//                            else{
+//                                progressDialog.dismiss();
+//                                Toast.makeText(Register.this,"Registration Failed",Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                    });
+//                }
+//
+//            }
+//        });
         create_stud.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,14 +86,18 @@ public class Register extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 progressDialog.dismiss();
                                 sendemailverification();
+                                Toast.makeText(Register.this,
+                                        "Please check your email for verification",Toast.LENGTH_SHORT).show();
 //                                SharedPreferences sharedPreferences=getSharedPreferences(SH_PRF,MODE_PRIVATE);
 //                                SharedPreferences.Editor editor=sharedPreferences.edit();
 //                                editor.putString(Reg_as,"STUDENT");
 //                                editor.apply();
                             }
-                            else{
+                            if(!task.isSuccessful()){
+                                Log.v("FaiLED",task.getException().toString());
                                 progressDialog.dismiss();
                                 Toast.makeText(Register.this,"Registration Failed",Toast.LENGTH_SHORT).show();
+
                             }
                         }
                     });
@@ -107,7 +112,7 @@ public class Register extends AppCompatActivity {
 
     public void diffviews(){
         create_stud = (Button)findViewById(R.id.sign_stud);
-        create_alumini=findViewById(R.id.sign_alu);
+      //  create_alumini=findViewById(R.id.sign_alu);
         email = (EditText)findViewById(R.id.etEmails);
         pas = (EditText)findViewById(R.id.pass);
 

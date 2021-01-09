@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/profile_layout"
+    android:layout_width="match_parent"
+    android:layout_height="260dp"
+    android:orientation="vertical"
+    android:padding="18dp">
+    <!--    ALUMNI PROFILE FRAGMENT-->
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:id="@+id/profile_image"
+            android:background="@drawable/alumni_shape"
+            android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:id="@+id/alumni_info"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginTop="-45dp"
+        android:background="#1C2653"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/alumniName_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_mono_bold"
+            android:gravity="center"
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Alumni Name" />
+
+        <TextView
+            android:id="@+id/companyName_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_thin"
+            android:gravity="center"
+            android:paddingBottom="12dp"
+            android:textColor="@color/White"
+            tools:text="Company Name" />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

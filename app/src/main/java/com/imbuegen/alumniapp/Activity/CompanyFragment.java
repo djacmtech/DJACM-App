@@ -62,8 +62,6 @@ SharedPreferences.Editor alumniargs;
     public CompanyFragment(NestedFragmentListener listener)
     {
         this.listener=listener;
-
-
     }
        public void backPressed() {
            editor=getContext().getSharedPreferences("SwitchTo", Context.MODE_PRIVATE).edit();

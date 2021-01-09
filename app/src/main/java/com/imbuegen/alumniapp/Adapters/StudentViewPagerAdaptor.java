@@ -1,4 +1,5 @@
 package com.imbuegen.alumniapp.Adapters;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
@@ -15,7 +16,7 @@ import com.imbuegen.alumniapp.Activity.DetailedEventFragment;
 import com.imbuegen.alumniapp.Activity.EventsFragment;
 import com.imbuegen.alumniapp.Activity.InternshipCompany;
 import com.imbuegen.alumniapp.Activity.InternshipDetails;
-import com.imbuegen.alumniapp.IfFragment;
+import com.imbuegen.alumniapp.HomeFragment;
 import com.imbuegen.alumniapp.NestedFragmentListener;
 import com.imbuegen.alumniapp.Screen2Fragment;
 
@@ -30,6 +31,7 @@ public class StudentViewPagerAdaptor extends FragmentStatePagerAdapter {
     SharedPreferences.Editor editor;
     private final class FragmentListener implements NestedFragmentListener
     {
+        @SuppressLint("ResourceType")
         public void onSwitchToNextFragment()
         {
             switchTo=context.getSharedPreferences("SwitchTo",MODE_PRIVATE);
@@ -40,8 +42,6 @@ public class StudentViewPagerAdaptor extends FragmentStatePagerAdapter {
                     fm.beginTransaction().remove(Department)
                             .commit();
                     editor.clear().commit();
-
-
                     Department = new CompanyFragment(listener);
                     break;
                 case "Dept":
@@ -55,6 +55,7 @@ public class StudentViewPagerAdaptor extends FragmentStatePagerAdapter {
                             .commit();
                     editor.clear().commit();
                         Department = new AlumniFragment(listener);
+                  //      fm.beginTransaction().replace(1,Department).commit();
                         break;
                 case "AlumniInfo":
                     fm.beginTransaction().remove(Department)
@@ -86,7 +87,7 @@ public class StudentViewPagerAdaptor extends FragmentStatePagerAdapter {
                 case "IF":editor.clear().commit();
                     fm.beginTransaction().remove(IF)
                             .commit();
-                    IF = new IfFragment(listener);
+                    IF = new HomeFragment(listener);
                     break;
                 case "IfComp":editor.clear().commit();
                     fm.beginTransaction().remove(IF)
@@ -115,7 +116,7 @@ public class StudentViewPagerAdaptor extends FragmentStatePagerAdapter {
     public Fragment getItem(int i) {
         switch (i)
         {
-            case 0:
+            case 3:
                 if(Department==null)
                 Department= new DepartmentsFragment(listener);
                 return Department;
@@ -125,9 +126,9 @@ public class StudentViewPagerAdaptor extends FragmentStatePagerAdapter {
                  return EventFrag;
             case 2:
                 return new CommiteeFragment();
-            case 3:
+            case 0:
                 if(IF==null)
-                    IF= new IfFragment(listener);
+                    IF= new HomeFragment(listener);
                 return IF;
             case 4:
                 return new CommiteeFragment();

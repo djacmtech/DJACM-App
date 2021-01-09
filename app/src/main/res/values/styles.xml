@@ -25,6 +25,12 @@
     <style name="MyActionButtonOverflow" parent="android:style/Widget.Holo.ActionButton.Overflow">
         <item name="android:tint">@color/black</item>
     </style>
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">#171636</item>
+        <item name="android:textColor">#fff</item>
+        <item name="textColorAlertDialogListItem">#fff</item>
+    </style>
+
 
 
     <style name="mNoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">

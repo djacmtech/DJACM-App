@@ -24,7 +24,7 @@
             android:id="@+id/company_name"
             android:text="Company Name"
             android:textStyle="bold"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:layout_toRightOf="@+id/company_logo"
             android:textSize="22sp"
             android:layout_toEndOf="@+id/company_logo"

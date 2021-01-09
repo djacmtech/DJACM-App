@@ -1,21 +1,30 @@
 package com.imbuegen.alumniapp.Activity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.text.Html;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +54,7 @@ public class AlumniInfoFragment extends Fragment {
     TextView nameTextView;
     TextView dateJoinTextView;
     TextView companyTextView;
-    ImageView profileImage;
+   ImageView profileImage;
     FloatingTextButton askQuestionButton;
     ListView questionsListView;
     QuestionsAdapter adapter;
@@ -82,7 +91,7 @@ SharedPreferences.Editor editor;
         questionsListView = v.findViewById(R.id.list);
         askQuestionButton = v.findViewById(R.id.ask_qustion_bt);
 
-        profileImage = profileLayout.findViewById(R.id.profile_image);
+       profileImage = profileLayout.findViewById(R.id.profile_image);
 
 
         prefs= getActivity().getSharedPreferences("Alumniinfo",MODE_PRIVATE);
@@ -117,29 +126,50 @@ return v;
     }
 
     private void showDialog() {
-        final AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+        final AlertDialog.Builder alert = new AlertDialog.Builder(getActivity(),R.style.MyDialogTheme);
         final EditText edittext = new EditText(getActivity());
-        alert.setMessage("Ask Question");
+      //  alert.setMessage("Ask Here");
+        alert.setTitle(Html.fromHtml("<font color='#FFFFFF'>Ask here</font>"));
         alert.setView(edittext);
-        alert.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+        edittext.setTextColor(Color.parseColor("#ffffff"));
+        edittext.setGravity(Gravity.CENTER);
+        edittext.setMaxWidth(194);
+
+        alert.setPositiveButton(Html.fromHtml("<font color='#FFFFFF'>Send</font>"), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
 
                 String question = edittext.getText().toString();
-
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(mAlumni.getDatabaseReferencePath());
-
-                databaseReference.child("questions").push().setValue(new QuestionsModel(question,""));
-              databaseReference.keepSynced(true);
                 Toast.makeText(getActivity(), "Question Asked", Toast.LENGTH_SHORT).show();
+//
+//                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(mAlumni.getDatabaseReferencePath());
+//
+//                databaseReference.child("questions").push().setValue(new QuestionsModel(question,""));
+//              databaseReference.keepSynced(true);
+
 
             }
         });
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        alert.setNegativeButton(Html.fromHtml("<font color='#FFFFFF'>Cancel</font>"), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 dialog.dismiss();
             }
         });
-        alert.show();
+        AlertDialog alertDialog = alert.create();
+        alertDialog.show();
+        Button positiveButton = alertDialog.getButton(Dialog.BUTTON_POSITIVE);
+        Button negativeButton = alertDialog.getButton(Dialog.BUTTON_NEGATIVE);
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) positiveButton.getLayoutParams();
+        layoutParams.weight = 10;
+        FrameLayout.LayoutParams editlayoutParams = (FrameLayout.LayoutParams)edittext.getLayoutParams();
+        editlayoutParams.setMargins(15,15,15,0);
+        edittext.setLayoutParams(editlayoutParams);
+        ((Button)alertDialog.findViewById(android.R.id.button1)).setBackgroundResource(R.drawable.qs_button_shape);
+        ((Button)alertDialog.findViewById(android.R.id.button2)).setBackgroundResource(R.drawable.qs_button_shape);
+        layoutParams.setMargins(15,0,15,0);
+        positiveButton.setLayoutParams(layoutParams);
+       negativeButton.setLayoutParams(layoutParams);
+    //   alert.create();
+//        alert.show();
     }
 
     private void removeQuestions() {

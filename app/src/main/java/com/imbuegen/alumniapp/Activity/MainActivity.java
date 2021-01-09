@@ -29,20 +29,20 @@ public class MainActivity extends BaseActivity {
 
         Intent intent1 = new Intent(MainActivity.this, BaseActivity.class);
         startActivity(intent1);
-        //Intent intent2 = new Intent(MainActivity.this, RegistrationActivity.class);
+        Intent intent2 = new Intent(MainActivity.this, RegistrationActivity.class);
 
 
 //        intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //        intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        /*boolean isAlumni = SFHandler.getString(getSharedPreferences("Auth",MODE_PRIVATE),SFHandler.USER_KEY).equals("Alumni");
+        boolean isAlumni = SFHandler.getString(getSharedPreferences("Auth",MODE_PRIVATE),SFHandler.USER_KEY).equals("Alumni");
 
         if(currentUser!=null && isAlumni)
             startActivity(intent2);
         else if(currentUser != null)
             startActivity(intent1);
         else  {startActivity(new Intent(MainActivity.this,LoginActivity.class));}
-        finish();*/
+        finish();
     }
 
     private void initNotification() {

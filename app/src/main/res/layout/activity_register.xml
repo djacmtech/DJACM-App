@@ -1,54 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
     tools:context=".Activity.Register">
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="106dp"
+        android:layout_marginBottom="431.68dp"
+        app:srcCompat="@drawable/acm_login_logo" />
 
-    <EditText
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        style="@style/username_pass_tv"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="248dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="345dp"
+        android:text="username"
+        android:textAllCaps="true" />
+
+    <AutoCompleteTextView
         android:id="@+id/etEmails"
-        android:layout_width="wrap_content"
+        style="@style/email_pass_edit"
+        android:layout_width="285dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
-        android:ems="10"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="282dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="308dp"
+        android:hint="@string/prompt_email"
+        android:textColor="#3BFBFE"
         android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/pass"
+        android:maxLines="1"
+        android:singleLine="true" />
+<!--    <EditText-->
+<!--        android:id="@+id/etEmails"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="148dp"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="textEmailAddress" />-->
+    <TextView
         android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        style="@style/username_pass_tv"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="338dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="275dp"
+        android:text="password"
+        android:textAllCaps="true" />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmails" />
+        android:layout_marginTop="362dp"
+        app:passwordToggleEnabled="true">
 
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/pass"
+            android:layout_width="285dp"
+            style="@style/email_pass_edit"
+            android:textColorHint="#3BFBFE"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginEnd="50dp"
+            android:hint="@string/prompt_password"
+            android:imeActionId="6"
+            android:textColor="#3BFBFE"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionUnspecified"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true" />
+    </android.support.design.widget.TextInputLayout>
+
+
+<!--    <EditText-->
+<!--        android:id="@+id/pass"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="76dp"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="textPassword"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/etEmails" />-->
     <Button
         android:id="@+id/sign_stud"
-        android:layout_width="171dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="80dp"
-        android:text="SignUp as Student"
-        app:layout_constraintBottom_toTopOf="@+id/sign_alu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pass"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/sign_alu"
-        android:layout_width="174dp"
+        style="@style/Signup_tv"
+        android:layout_width="265dp"
         android:layout_height="43dp"
-        android:layout_marginBottom="196dp"
-        android:text="Signup as alumini"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="468dp"
+        android:background="@drawable/button_shape"
+        android:text="SignUp as Student"
+        android:textColor="#0A0E2A"/>
+
+<!--    <Button-->
+<!--        android:id="@+id/sign_stud"-->
+<!--        android:layout_width="171dp"-->
+<!--        android:layout_height="42dp"-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        android:text="SignUp as Student" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/sign_alu"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="196dp"-->
+<!--        android:text="Signup as alumini"-->
+<!--        android:textColor="#000"-->
+<!--        android:layout_below="@id/sign_stud"-->
+<!--        android:layout_centerHorizontal="true"/>-->
+</RelativeLayout>

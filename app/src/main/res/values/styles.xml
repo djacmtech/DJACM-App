@@ -25,6 +25,12 @@
     <style name="MyActionButtonOverflow" parent="android:style/Widget.Holo.ActionButton.Overflow">
         <item name="android:tint">@color/black</item>
     </style>
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">#171636</item>
+        <item name="android:textColor">#fff</item>
+        <item name="textColorAlertDialogListItem">#fff</item>
+    </style>
+
 
 
     <style name="mNoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -42,6 +48,25 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/White</item>
         <item name="colorButtonNormal">@color/colorPrimary</item>
+    </style>
+
+    <style name="NewTheme" parent="Theme.AppCompat.DayNight">
+        <item name="colorPrimary">@color/newColorPrimary</item>
+        <item name="colorPrimaryDark">@color/newColorPrimary</item>
+        <item name="colorAccent">@color/newColorPrimary</item>
+        <item name="actionBarStyle">@style/NewThemeActionBar</item>
+        <item name="android:windowBackground">@color/newColorPrimary</item>
+        <item name="android:textColor">@color/White</item>
+    </style>
+
+    <style name="NewThemeActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="titleTextStyle">@style/NewThemeActionBarTitleText</item>
+    </style>
+
+    <style name="NewThemeActionBarTitleText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/White</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

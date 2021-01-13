@@ -2,35 +2,39 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="#0A0E2A"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    android:padding="15dp">
+    android:layout_height="match_parent">
 <android.support.v4.view.ViewPager
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_above="@+id/navigation"
+    android:layout_above="@+id/navigation_layout"
     android:id="@+id/studentviewpager">
-<!--    <android.support.v7.widget.RecyclerView-->
-<!--        android:id="@+id/list_depts"-->
-<!--        android:layout_alignParentTop="true"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_above="@id/navigation"/>-->
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
 </android.support.v4.view.ViewPager>
 
+    <LinearLayout
+        android:id="@+id/navigation_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/White"
+        >
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:background="@color/White"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_menu" />
+        android:layout_marginTop="1dp"
+        android:background="@color/newColorPrimary"
+        app:menu="@menu/bottom_menu"
+        app:itemIconTint="@drawable/bottomnav_states"
+        app:itemTextColor="@drawable/bottomnav_states"
+        app:labelVisibilityMode="labeled"
+        />
+    </LinearLayout>
 
 </RelativeLayout>

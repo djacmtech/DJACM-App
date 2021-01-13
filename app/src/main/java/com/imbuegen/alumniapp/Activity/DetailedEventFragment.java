@@ -57,6 +57,7 @@ import com.imbuegen.alumniapp.Models.EventModel;
 import com.imbuegen.alumniapp.NestedFragmentListener;
 import com.imbuegen.alumniapp.R;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -186,6 +187,8 @@ public class DetailedEventFragment extends Fragment {
         listener.onSwitchToNextFragment();
 
    }
+
+
 }
 
 //>>>>>>> 7f314d941a6338c5387ec60e3e78c7ade6107213:app/src/main/java/com/imbuegen/alumniapp/Activity/DetailedEventFragment.java

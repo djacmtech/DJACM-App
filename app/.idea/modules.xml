@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-294796958/DJACM-App.iml" filepath="$PROJECT_DIR$/.idea/modules/-294796958/DJACM-App.iml" group="DJACM-App" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app.iml" group="DJACM-App/app" />
+    </modules>
+  </component>
+</project>

@@ -1,47 +1,28 @@
 package com.imbuegen.alumniapp.Models;
 
-public class CommitteeMember {
+import android.graphics.Bitmap;
 
+public class CommitteeMember
+{
+    private String name;
+    private String position;
+    private Bitmap photo;
 
-    int photoId;
-
-
-    String photoUrl;
-    String name;
-    String position;
-
-    public CommitteeMember() {
+    public CommitteeMember()
+    {
+        this("","",null);
     }
 
+    public CommitteeMember(String name, String position)
+    {
+        this(name,position,null);
+    }
 
-    public CommitteeMember(int photoId, String name, String position) {
-        this.photoId = photoId;
+    public CommitteeMember(String name, String position, Bitmap photo)
+    {
         this.name = name;
         this.position = position;
-    }
-
-    public CommitteeMember(String photoUrl, String name, String position) {
-        this.photoUrl = photoUrl;
-        this.name = name;
-        this.position = position;
-
-    }
-
-
-    public int getPhotoId() {
-        return photoId;
-    }
-
-    public void setPhotoId(int photoId) {
-        this.photoId = photoId;
-    }
-
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
-
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
+        this.photo = photo;
     }
 
     public String getName() {
@@ -60,4 +41,13 @@ public class CommitteeMember {
         this.position = position;
     }
 
+    public Bitmap getPhoto()
+    {
+        return photo;
+    }
+
+    public void setPhoto(Bitmap newPhoto)
+    {
+        this.photo = newPhoto;
+    }
 }

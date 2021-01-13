@@ -76,6 +76,7 @@ public class EventsFragment extends Fragment {
     View v=inflater.inflate(R.layout.activity_events,null);
         eventsRef = database.getReference("notifications");
 
+
         eventsListView  = v.findViewById(R.id.list_events);
 
         eventModelList = new ArrayList<>();
@@ -109,7 +110,7 @@ public class EventsFragment extends Fragment {
 //        });
 
   //      BottomNavigationView navigation = v.findViewById(R.id.navigation);
-//        navigation.getMenu().findItem(R.id.navigation_events).setCheckable(true).setChecked(true);
+//        navigation.getMenu().findItem(R.id.navigation_events).setCheckable(true).setChecked(true);*/
         return v;
 
         //putextra me key eventName variable se store karna ,mene getextra me eventName key use kiya hai

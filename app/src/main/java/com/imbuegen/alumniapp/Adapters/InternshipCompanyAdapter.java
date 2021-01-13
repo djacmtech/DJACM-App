@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.imbuegen.alumniapp.InternshipCompanyClickListener;
 import com.imbuegen.alumniapp.InternshipHolder;
+import com.imbuegen.alumniapp.InternshipHolder;
 import com.imbuegen.alumniapp.Models.InternshipCompanyModel;
 import com.imbuegen.alumniapp.NestedFragmentListener;
 import com.imbuegen.alumniapp.R;

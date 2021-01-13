@@ -14,28 +14,29 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher1_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-
+        android:theme="@style/NewTheme"
         tools:replace="android:icon">
-        <activity android:name=".Activity.ApplicationForm"></activity>
+        <activity android:name=".Activity.THRegistration"/>
+        <activity android:name=".Activity.ResetPassword" />
+        <activity android:name=".Activity.ApplicationForm" />
         <activity android:name=".Activity.StudentLog" />
         <activity android:name=".Activity.AlumniLoginpg" />
         <activity android:name=".Activity.Register" />
+        <activity android:name=".ui.login.LoginActivity"
+            android:label="@string/title_activity_login" /> <!-- ======= -->
+        <!-- tools:replace="android:icon"> -->
+        <!-- &gt;>>>>>> 7f314d941a6338c5387ec60e3e78c7ade6107213 -->
         <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
-<!--=======-->
-
-<!--        tools:replace="android:icon">-->
-<!--&gt;>>>>>> 7f314d941a6338c5387ec60e3e78c7ade6107213-->
-        <activity android:name=".Activity.InternshipDetails"
-            android:parentActivityName=".Activity.InternshipCompany">
-        </activity>
+            android:name=".Activity.InternshipDetails"
+            android:parentActivityName=".Activity.InternshipCompany" />
         <activity android:name=".Activity.InternshipCompany" />
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".Activity.SplashScreenActivity"
@@ -54,7 +55,6 @@
         <activity
             android:name=".Activity.MainActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Activity.BaseActivity"
             android:screenOrientation="portrait" />
@@ -65,22 +65,16 @@
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:screenOrientation="portrait" />
 
-
         <service android:name=".Service.FCMInstanceId">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-
         <activity
             android:name=".Activity.AlumniLoginActivity"
             android:label="@string/title_activity_alumni_login"
             android:screenOrientation="portrait" />
-
-          </application>
-
-
-
+    </application>
 
 </manifest>

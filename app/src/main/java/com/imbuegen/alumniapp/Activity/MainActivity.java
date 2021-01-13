@@ -28,6 +28,7 @@ public class MainActivity extends BaseActivity {
         initNotification();
 
         Intent intent1 = new Intent(MainActivity.this, BaseActivity.class);
+        startActivity(intent1);
         Intent intent2 = new Intent(MainActivity.this, RegistrationActivity.class);
 
 

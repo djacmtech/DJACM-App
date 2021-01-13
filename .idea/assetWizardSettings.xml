@@ -3,6 +3,12 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
+
+        <entry key="imageWizard">
+          <value>
+            <PersistentState />
+          </value>
+        </entry>
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -18,7 +24,10 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
+
                                       <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/event/baseline_event_24.xml" />
+
+                                      <entry key="url" value="jar:file:/E:/Android%20Studio/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/event/baseline_event_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -31,6 +40,10 @@
                             <entry key="color" value="9ae5ce" />
                             <entry key="outputName" value="ic_baseline_event_24" />
                             <entry key="sourceFile" value="C:\Users\Priyanka jain\DJACM-App" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="bottomnav_alumni" />
+                            <entry key="sourceFile" value="E:\Android Studio\Projects\DJACM-App\app\src\main\res\drawable\alumni.svg" />
                           </map>
                         </option>
                       </PersistentState>

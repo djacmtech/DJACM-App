@@ -9,13 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.imbuegen.alumniapp.NestedFragmentListener;
 import com.imbuegen.alumniapp.R;
 
 import com.imbuegen.alumniapp.Models.EventModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -23,8 +27,11 @@ public class EventListAdapter extends ArrayAdapter<EventModel> {
 
     private Activity context;
     private List<EventModel> data;
+    private Button learnMore;
     NestedFragmentListener listener;
     SharedPreferences.Editor editor;
+    String id;
+    ImageView eventBg;
     public EventListAdapter(Activity context, List<EventModel> alumniList, NestedFragmentListener listener) {
         super(context,R.layout.event_list,alumniList);
         this.context = context;
@@ -41,10 +48,17 @@ public class EventListAdapter extends ArrayAdapter<EventModel> {
         LayoutInflater inflater = context.getLayoutInflater();
 
         View listItemView = inflater.inflate(R.layout.event_list,null,true);
-        TextView title_tv = (TextView) listItemView.findViewById(R.id.title_tv);
+        learnMore = listItemView.findViewById(R.id.btnEventLearnMore);
+        TextView title_tv = (TextView) listItemView.findViewById(R.id.eventTitle);
         title_tv.setText(data.get(position).title);
         TextView date_tv = (TextView) listItemView.findViewById(R.id.date_tv);
         date_tv.setText(data.get(position).date);
+        TextView shortDesc = (TextView)listItemView.findViewById(R.id.txtShortDescEvent);
+        shortDesc.setText(data.get(position).shortDesc);
+        eventBg = listItemView.findViewById(R.id.eventBg);
+        Glide.with(context).load(data.get(position).photoURL).into(eventBg);
+
+
 
 
         listItemView.setOnClickListener(new View.OnClickListener() {
@@ -52,13 +66,6 @@ public class EventListAdapter extends ArrayAdapter<EventModel> {
             public void onClick(View v) {
 
                 String eventName = data.get(position).getTitle();
-                if(!(eventName.equalsIgnoreCase("Industrial Visit (I-Medita)") ||
-                        eventName.equalsIgnoreCase("Placements 101") ||
-                        eventName.equalsIgnoreCase("Raspberry Pi Workshop"))) {
-
-                    Toast.makeText(context, "No Pictures Available", Toast.LENGTH_SHORT).show();
-                    return;
-                }
 
 
                 editor=context.getSharedPreferences("SwitchTo", Context.MODE_PRIVATE).edit();
@@ -66,6 +73,7 @@ public class EventListAdapter extends ArrayAdapter<EventModel> {
                 editor.commit();
                 editor=context.getSharedPreferences("EventInfo", Context.MODE_PRIVATE).edit();
                 editor.putString("name",eventName);
+                editor.putString("id",data.get(position).id);
                 editor.putString("body", data.get(position).getBody());
                 editor.commit();
                 listener.onSwitchToNextFragment();
@@ -76,6 +84,28 @@ public class EventListAdapter extends ArrayAdapter<EventModel> {
 //                context.startActivity(i);
             }
         });
+
+        learnMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String eventName = data.get(position).getTitle();
+
+                editor=context.getSharedPreferences("SwitchTo", Context.MODE_PRIVATE).edit();
+                editor.putString("goto","DetEvent");
+                editor.commit();
+                editor=context.getSharedPreferences("EventInfo", Context.MODE_PRIVATE).edit();
+                editor.putString("name",eventName);
+                editor.putString("id",data.get(position).id);
+                editor.putString("body", data.get(position).getBody());
+                editor.commit();
+                listener.onSwitchToNextFragment();
+
+            }
+        });
+
+
+
 
         return listItemView;
     }

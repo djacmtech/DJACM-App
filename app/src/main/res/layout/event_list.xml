@@ -1,26 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="10dp"
     xmlns:tools="http://schemas.android.com/tools">
+    <ImageView
+        android:layout_width="450dp"
+        android:layout_height="150dp"
+        android:id="@+id/eventBg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="2dp"
+        app:srcCompat="@drawable/ic_baseline_event_24"/>
 
     <TextView
-        android:id="@+id/title_tv"
+        android:id="@+id/eventTitle"
         tools:text="Title"
-        android:textSize="20sp"
-        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textColor="#80deea"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eventBg"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtShortDescEvent"
+        android:layout_below="@+id/eventTitle"
+        android:textColor="#d4c6c5"
+        android:layout_centerInParent="true"
+        android:textSize="12sp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:text="text"/>
 
     <TextView
         android:id="@+id/date_tv"
         tools:text="Date"
+        android:textColor="#fff"
+        android:textSize="13sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"/>
+        android:layout_below="@+id/txtShortDescEvent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:layout_centerInParent="true"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Learn More"
+        android:id="@+id/btnEventLearnMore"
+        android:background="@drawable/button_shape"
+        android:textColor="#fff"
+        android:backgroundTint="#de3428"
+        android:textAllCaps="false"
+        android:layout_below="@+id/date_tv"
+        android:layout_centerInParent="true"/>
 
 
 
-</LinearLayout>
+</RelativeLayout>

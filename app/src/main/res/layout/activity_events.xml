@@ -5,14 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="2dp"
-    tools:context=".Activity.EventsActivity">
+    tools:context=".Activity.EventsActivity"
+    android:background="#04051f">
 
     <ListView
         android:id="@+id/list_events"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"/>
+        android:padding="5dp"
+        android:divider="#b3bdb6"
+        android:dividerHeight="2px"/>
 <!--        android:layout_above="@id/navigation"-->
 
 

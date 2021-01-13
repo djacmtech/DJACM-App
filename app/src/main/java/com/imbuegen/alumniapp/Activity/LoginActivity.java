@@ -2,6 +2,7 @@ package com.imbuegen.alumniapp.Activity;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
+
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
@@ -54,9 +57,14 @@ public class LoginActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
+        VideoView videoview = (VideoView) findViewById(R.id.videoview);
+        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.acm_mobile_1);
+        videoview.setVideoURI(uri);
+        videoview.start();
+        videoview.getBackground().setAlpha(145);
 
         ImageView img=(ImageView)findViewById(R.id.logo);
-        Drawable myDrawable = getResources().getDrawable(R.drawable.ic_acm);
+        Drawable myDrawable = getResources().getDrawable(R.drawable.acm_white_logo);
         img.setImageDrawable(myDrawable);
 
     }

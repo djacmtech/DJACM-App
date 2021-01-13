@@ -58,7 +58,7 @@
         <item name="android:windowBackground">@color/newColorPrimary</item>
         <item name="android:textColor">@color/White</item>
     </style>
-
+ 750
     <style name="NewThemeActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
         <item name="titleTextStyle">@style/NewThemeActionBarTitleText</item>
     </style>

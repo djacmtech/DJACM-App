@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_bg"
+    android:background="@drawable/register_bg"
     tools:context=".Activity.Register">
     <ProgressBar
         android:id="@+id/login_progress"
@@ -22,7 +22,7 @@
         android:layout_marginStart="135dp"
         android:layout_marginTop="106dp"
         android:layout_marginBottom="431.68dp"
-        app:srcCompat="@drawable/acm_login_logo" />
+        app:srcCompat="@drawable/acm_white_logo" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -4,24 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_bg1"
+    android:background="#0A0E2A"
     android:orientation="vertical">
-
+    <!--    FIRST PAGE TO THE APP -->
+    <VideoView
+        android:id="@+id/videoview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0A0E2A" />
     <ImageView
         android:id="@+id/logo"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="129dp"
+        android:layout_marginStart="129dp"
         android:layout_marginTop="172dp"
-        app:srcCompat="@drawable/ic_acm" />
+        android:foregroundGravity="center"
+        app:srcCompat="@drawable/acm_white_logo" />
 
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="47dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="47dp"
         android:layout_marginTop="435dp"
         android:layout_marginBottom="162dp"
         android:orientation="vertical">
@@ -29,6 +34,7 @@
 
         <Button
             android:id="@+id/studentLogin"
+            style="@style/ButtonText"
             android:layout_width="236dp"
             android:layout_height="38dp"
             android:layout_centerHorizontal="true"
@@ -38,34 +44,33 @@
             android:onClick="signInStudent"
             android:text="Login as Student"
             android:textColor="@android:color/white"
-            style="@style/ButtonText"
             tools:text="Login as Student" />
 
-<!--        <Button-->
-<!--            android:id="@+id/AL"-->
-<!--            android:layout_width="236dp"-->
-<!--            android:layout_height="38dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:layout_marginBottom="8dp"-->
-<!--            android:background="@drawable/button_shape"-->
-<!--            android:onClick="signInAlumni"-->
-<!--            style="@style/ButtonText"-->
-<!--            android:text="Login as Alumni"-->
-<!--            android:textColor="#000"-->
-<!--            tools:text="Login as Alumni" />-->
+        <!--        <Button-->
+        <!--            android:id="@+id/AL"-->
+        <!--            android:layout_width="236dp"-->
+        <!--            android:layout_height="38dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:layout_marginBottom="8dp"-->
+        <!--            android:background="@drawable/button_shape"-->
+        <!--            android:onClick="signInAlumni"-->
+        <!--            style="@style/ButtonText"-->
+        <!--            android:text="Login as Alumni"-->
+        <!--            android:textColor="#000"-->
+        <!--            tools:text="Login as Alumni" />-->
 
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/signupbtn"
+        style="@style/Signup_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        style="@style/Signup_tv"
-        android:textAllCaps="false"
         android:layout_marginBottom="27dp"
-        android:text="No account ? Sign up here " />
+        android:text="No account ? Sign up here "
+        android:textAllCaps="false" />
 
 </RelativeLayout>

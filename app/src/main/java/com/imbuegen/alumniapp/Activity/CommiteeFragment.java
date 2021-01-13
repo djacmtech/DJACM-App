@@ -105,8 +105,8 @@ public class CommiteeFragment extends Fragment
         committeeRecyclerView.setAdapter(new CommitteeAdapter(committeeMembers, false));
 
         //Initialzing spinner
-        ArrayAdapter<String> years = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item);
-        years.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<String> years = new ArrayAdapter<String>(this.getContext(),R.layout.spinner_item);
+        years.setDropDownViewResource(R.layout.spinner_item);
         //Adding the years to be displayed to the array adapter
         for(int a = START_YEAR; a < CURR_YEAR; ++a)
         {

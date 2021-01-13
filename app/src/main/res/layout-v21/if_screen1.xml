@@ -33,6 +33,7 @@
                     android:background="#171636"
                     app:cardCornerRadius="10dp"
                     android:elevation="6dp"
+                    android:outlineAmbientShadowColor="#3BFBFE"
                     android:layout_margin="18dp">
                     <RelativeLayout
                         android:layout_width="match_parent"

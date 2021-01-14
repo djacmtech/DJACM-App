@@ -130,9 +130,6 @@ public class StudentViewPagerAdaptor extends FragmentStatePagerAdapter {
                 if(IF==null)
                     IF= new HomeFragment(listener);
                 return IF;
-            case 4:
-                return new CommiteeFragment();
-
             default:return null;
         }
     }

@@ -148,6 +148,18 @@ public class DetailedEventFragment extends Fragment {
 
     }
 
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+
+        //Cancelling glide requests
+        /*Glide.with(getActivity()).clear(image1);
+        Glide.with(getActivity()).clear(image2);
+        Glide.with(getActivity()).clear(image3);
+        Glide.with(getActivity()).clear(image4);*/
+    }
+
     private void getImagedata() {
         eventsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

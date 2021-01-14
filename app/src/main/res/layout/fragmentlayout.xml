@@ -7,11 +7,10 @@
     <TextView
         android:id="@+id/alumni_msg"
         android:layout_width="264dp"
-        android:layout_height="49dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="58dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="38dp"
-        android:lineHeight="16.2sp"
         android:text="Get to know about the Alumini’s Journey through the Questionaire of different companies"
         android:textColor="#FFF"
         android:textSize="13.5sp" />
@@ -28,6 +27,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/alumni_msg"
+        android:layout_marginTop="4dp"
         android:layout_centerHorizontal="true"
         android:layout_margin="12dp" />
 </RelativeLayout>
+
+<!--android:lineHeight="16.2sp"-->

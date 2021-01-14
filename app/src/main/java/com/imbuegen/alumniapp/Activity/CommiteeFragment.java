@@ -301,7 +301,7 @@ public class CommiteeFragment extends Fragment
                 committeeMembers.get(commPicassoDownloadTargets.get(target)).setPhoto(bmp);
 
             commPicassoDownloadTargets.remove(target);
-            if(commPicassoDownloadTargets.isEmpty())
+            if(commPicassoDownloadTargets.isEmpty() && getView() != null)
             {
                 //Displaying the recycler view
                 committeeRecyclerView.setVisibility(View.VISIBLE);
@@ -318,7 +318,7 @@ public class CommiteeFragment extends Fragment
             facultyMembers.get(facPicassoDownloadTargets.get(target)).setPhoto(bmp);
             facPicassoDownloadTargets.remove(target);
 
-            if(facPicassoDownloadTargets.isEmpty())
+            if(facPicassoDownloadTargets.isEmpty() && getView() != null)
             {
                 //Hiding the progress bar
                 ((ProgressBar) getView().findViewById(R.id.faculty_loading_progressbar)).setVisibility(View.INVISIBLE);

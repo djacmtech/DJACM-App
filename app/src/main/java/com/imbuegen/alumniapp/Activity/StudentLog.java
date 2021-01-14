@@ -78,7 +78,7 @@ public class StudentLog extends AppCompatActivity {
         });
         if(user!=null){
             finish();
-            startActivity(new Intent(StudentLog.this,BaseActivity.class));
+            switchToHomePage();
         }
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +121,7 @@ public class StudentLog extends AppCompatActivity {
                 // ...
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
-                startActivity(new Intent(StudentLog.this, BaseActivity.class));
+                switchToHomePage();
             } catch (ApiException e) {
                 Toast.makeText(StudentLog.this,"SIGN IN UNSUCCESSFUL",Toast.LENGTH_SHORT).show();
                 Log.v("Error", String.valueOf(e));
@@ -164,7 +164,7 @@ public class StudentLog extends AppCompatActivity {
         if(emailflag){
             finish();
             Toast.makeText(StudentLog.this,"Sign in Successful",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(StudentLog.this, BaseActivity.class));
+            switchToHomePage();
         }else{
             Toast.makeText(StudentLog.this,"Verify Your Email",Toast.LENGTH_SHORT).show();
             firebaseAuth.signOut();
@@ -193,6 +193,13 @@ public class StudentLog extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void switchToHomePage()
+    {
+        Intent intent = new Intent(StudentLog.this, BaseActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
 

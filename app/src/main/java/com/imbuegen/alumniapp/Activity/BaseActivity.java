@@ -77,6 +77,27 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+
+        /*//Checking if no user is signed in
+        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth)
+            {
+                if(firebaseAuth.getCurrentUser() == null)
+                {
+                    //Switching to the login page
+                    Intent intent = new Intent(BaseActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+            }
+        });*/
+    }
+
     public void onBackPressed() {
         if (viewPager.getCurrentItem() == 3) {
             if (adapter.getItem(3) instanceof CompanyFragment) {
@@ -175,7 +196,11 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_logout) {
             FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(this, MainActivity.class));
+
+            Intent intent = new Intent(BaseActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+
             finish();
         }
         return true;

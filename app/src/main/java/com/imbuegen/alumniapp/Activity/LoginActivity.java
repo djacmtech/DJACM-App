@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private static Button b1;
     private static Button b2;
 
+    private VideoView videoView; //The view used for playing the background video
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,16 +59,32 @@ public class LoginActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
-        VideoView videoview = (VideoView) findViewById(R.id.videoview);
-        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.acm_mobile_1);
-        videoview.setVideoURI(uri);
-        videoview.start();
-        videoview.getBackground().setAlpha(145);
 
         ImageView img=(ImageView)findViewById(R.id.logo);
         Drawable myDrawable = getResources().getDrawable(R.drawable.acm_white_logo);
         img.setImageDrawable(myDrawable);
 
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+
+        //Initializing the video view
+        videoView = (VideoView) findViewById(R.id.videoview);
+        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.acm_mobile_1);
+        videoView.setVideoURI(uri);
+        videoView.getBackground().setAlpha(145);
+
+        //Playing the video
+        videoView.start();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        finishAffinity(); //Closing the app
     }
 
 //<<<<<<< HEAD

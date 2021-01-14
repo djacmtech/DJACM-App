@@ -2,7 +2,6 @@ package com.imbuegen.alumniapp.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,10 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.view.inputmethod.EditorInfo;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +30,6 @@ import com.imbuegen.alumniapp.Adapters.CompanyModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.imbuegen.alumniapp.Adapters.StudentViewPagerAdaptor;
 import com.imbuegen.alumniapp.NestedFragmentListener;
 import com.imbuegen.alumniapp.R;
 
@@ -174,25 +171,25 @@ SharedPreferences.Editor alumniargs;
     public void onCreateOptionsMenu(Menu menu,MenuInflater inflater) {
         //TODO:resolve this
 
-        inflater.inflate(R.menu.search_toolbar,menu);
-        MenuItem menuItem=menu.findItem(R.id.alumni_search);
-        SearchView searchView=(SearchView) menuItem.getActionView();
+    inflater.inflate(R.menu.search_toolbar,menu);
+    MenuItem menuItem=menu.findItem(R.id.alumni_search);
+    SearchView searchView = (SearchView)menuItem.getActionView();
 
+    //Changing the search view icon
+    ((ImageView)searchView.findViewById(getActivity().getResources().getIdentifier("android:id/search_button",null,null))).setImageResource(R.drawable.search_icon);
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
+    searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        @Override
+        public boolean onQueryTextSubmit(String s) {
+            return false;
+        }
 
-            @Override
-            public boolean onQueryTextChange(String s) {
-                adapter.getFilter().filter(s);
-                return true;
-            }
-        });
-
-
+        @Override
+        public boolean onQueryTextChange(String s) {
+            adapter.getFilter().filter(s);
+            return true;
+        }
+    });
     }
 
 }

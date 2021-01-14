@@ -44,6 +44,7 @@ public class MainActivity extends BaseActivity {
         else  {startActivity(new Intent(MainActivity.this,LoginActivity.class));}
         finish();
     }
+    
 
     private void initNotification() {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {

@@ -58,6 +58,16 @@ public class DepartmentsFragment extends Fragment// implements NestedFragmentLis
         return v;
     }
 
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+
+        //Setting the action bar title
+        if(getActivity().getActionBar() != null)
+            getActivity().getActionBar().setTitle("Alumni");
+    }
+
 
     private void loadData() {
         deptList.clear();

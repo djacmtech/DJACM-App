@@ -71,4 +71,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="NewThemeDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/newColorPrimary</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:textColorPrimary">@color/White</item>
+    </style>
+
 </resources>

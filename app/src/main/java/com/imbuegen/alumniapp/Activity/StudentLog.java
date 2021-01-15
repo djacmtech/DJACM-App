@@ -51,7 +51,7 @@ public class StudentLog extends AppCompatActivity {
         setContentView(R.layout.activity_student_log);
         google_btn=findViewById(R.id.googleBtn);
         views();
-        progressDialog1 = new ProgressDialog(this);
+        progressDialog1 = new ProgressDialog(this, R.style.NewThemeDialog);
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

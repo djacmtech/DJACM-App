@@ -1,7 +1,10 @@
 package com.imbuegen.alumniapp.Activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,14 +13,19 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.imbuegen.alumniapp.Adapters.StudentViewPagerAdaptor;
 import com.imbuegen.alumniapp.HomeFragment;
+import com.imbuegen.alumniapp.Models.CommitteeMember;
 import com.imbuegen.alumniapp.R;
 import com.imbuegen.alumniapp.Screen2Fragment;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BaseActivity extends AppCompatActivity {
     BottomNavigationView navigation;
@@ -26,6 +34,9 @@ public class BaseActivity extends AppCompatActivity {
     Activity activity;
     MenuItem prevMenuItem;
     StudentViewPagerAdaptor adapter;
+
+    //A cache for storing the yearwise photos of the committee
+    public HashMap<Integer, ArrayList<CommitteeMember>> committePhotoCache = new HashMap<Integer, ArrayList<CommitteeMember>>();
 
     public void setActivity(Activity a) {
         activity = a;
@@ -139,6 +150,10 @@ public class BaseActivity extends AppCompatActivity {
 
             }
         }
+        else if(viewPager.getCurrentItem() == 2)
+        {
+            finishAffinity();
+        }
     }
 
     //    private boolean loadFragment(Fragment fragment)
@@ -195,13 +210,33 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_logout) {
-            FirebaseAuth.getInstance().signOut();
 
-            Intent intent = new Intent(BaseActivity.this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            //Displaying confirmation dialog
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this, R.style.NewThemeDialog);
+            dialogBuilder.setTitle("Log Out");
+            dialogBuilder.setMessage("Are you sure you want to log out ?");
+            dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which)
+                {
+                    //Signing out
+                    FirebaseAuth.getInstance().signOut();
 
-            finish();
+                    Intent intent = new Intent(BaseActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+
+                    finish();
+                }
+            });
+            dialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss(); //Closing the dialog box
+                }
+            });
+            dialogBuilder.show();
+
         }
         return true;
     }

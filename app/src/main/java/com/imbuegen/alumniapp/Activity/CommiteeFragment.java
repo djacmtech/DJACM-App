@@ -1,5 +1,8 @@
 package com.imbuegen.alumniapp.Activity;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PorterDuff;
@@ -37,10 +40,14 @@ import com.imbuegen.alumniapp.Models.CommitteeMember;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import su.j2e.rvjoiner.JoinableAdapter;
 import su.j2e.rvjoiner.JoinableLayout;
-import su.j2e.rvjoiner.RvJoiner;import com.imbuegen.alumniapp.R;
+import su.j2e.rvjoiner.RvJoiner;
+
+import com.imbuegen.alumniapp.NestedFragmentListener;
+import com.imbuegen.alumniapp.R;
 import com.imbuegen.alumniapp.Service.CommitteePhotoDownloader;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
@@ -61,8 +68,13 @@ public class CommiteeFragment extends Fragment
 
     private ArrayList<CommitteeMember> facultyMembers = new ArrayList<CommitteeMember>(); //List of the faculty members
     private HashMap<Target,Integer> facPicassoDownloadTargets = new HashMap<Target, Integer>(); //The picasso targets being used for downloading faculty member pics
+    private HashSet<CommitteeMember> loadedMembers = new HashSet<CommitteeMember>(); //Set of members whose pics have been loaded
 
     private long latestDownloadTimestamp; //The timestamp for the latest download session
+
+    private Spinner yearSpinner; //The spinner for selecting the year
+
+    private NestedFragmentListener fragmentListener; //The nested fragment listener for switching the fragment on back press
 
     private Spinner.OnItemSelectedListener spinnerItemSelectedListener = new Spinner.OnItemSelectedListener()
     {
@@ -70,10 +82,13 @@ public class CommiteeFragment extends Fragment
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id)
         {
-            String year = ((Integer)(START_YEAR + pos)).toString();
+            if(view != null)
+            {
+                String year = ((Integer) (START_YEAR + pos)).toString();
 
-            //Displaying records for the selected year
-            displayCommitteeMembers(year);
+                //Displaying records for the selected year
+                displayCommitteeMembers(year);
+            }
         }
 
         @Override
@@ -81,6 +96,18 @@ public class CommiteeFragment extends Fragment
         {
         }
     };
+
+    /*
+    public CommiteeFragment()
+    {
+
+    }
+
+    @SuppressLint("ValidFragment")
+    public CommiteeFragment(NestedFragmentListener listener)
+    {
+        this.fragmentListener = listener;
+    }*/
 
     @Nullable
     @Override
@@ -103,6 +130,7 @@ public class CommiteeFragment extends Fragment
         committeeRecyclerView = fragmentView.findViewById(R.id.committee_recycler_view);
         committeeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         committeeRecyclerView.setAdapter(new CommitteeAdapter(committeeMembers, false));
+        committeeRecyclerView.setNestedScrollingEnabled(false);
 
         //Initialzing spinner
         ArrayAdapter<String> years = new ArrayAdapter<String>(this.getContext(),R.layout.spinner_item);
@@ -112,9 +140,10 @@ public class CommiteeFragment extends Fragment
         {
             years.add((a + "-" + (a - 2000 + 1)));
         }
-        final Spinner yearSpinner = fragmentView.findViewById(R.id.committee_year_spinner);
-        yearSpinner.setAdapter(years);
+        yearSpinner = fragmentView.findViewById(R.id.committee_year_spinner);
         yearSpinner.setOnItemSelectedListener(spinnerItemSelectedListener);
+        yearSpinner.setAdapter(years);
+        yearSpinner.setSelection(CURR_YEAR - START_YEAR - 1);
 
         return fragmentView;
     }
@@ -125,7 +154,7 @@ public class CommiteeFragment extends Fragment
         super.onStart();
 
         //Setting the initial year
-        ((Spinner)getView().findViewById(R.id.committee_year_spinner)).setSelection(CURR_YEAR - START_YEAR - 1);
+        //((Spinner)getView().findViewById(R.id.committee_year_spinner)).setSelection(CURR_YEAR - START_YEAR - 1);
     }
 
     @Override
@@ -148,8 +177,40 @@ public class CommiteeFragment extends Fragment
         facPicassoDownloadTargets.clear();
     }
 
+    public void backPressed()
+    {
+        if(getContext() != null)
+        {
+            SharedPreferences.Editor sharedPref = getContext().getSharedPreferences("SwitchTo", Context.MODE_PRIVATE).edit();
+            sharedPref.putString("goto", "Comp");
+            sharedPref.commit();
+
+            fragmentListener.onSwitchToNextFragment();
+        }
+    }
+
     private void displayCommitteeMembers(String year)
     {
+        //Checking if cached copy exists
+        BaseActivity baseActivity = (BaseActivity)getActivity();
+        if(baseActivity.committePhotoCache.containsKey(Integer.parseInt(year)))
+        {
+            //Getting the cached members list
+            ArrayList<CommitteeMember> cachedList = baseActivity.committePhotoCache.get(Integer.parseInt(year));
+
+            //Updating the committee members list
+            committeeMembers.clear();
+            for(int a = 0; a < cachedList.size(); a++)
+            {
+                committeeMembers.add(cachedList.get(a));
+            }
+
+            //Updating the adapter
+            committeeRecyclerView.getAdapter().notifyDataSetChanged();
+
+            return;
+        }
+
         //Displaying the progress bar
         committeeLoadingBar.setVisibility(View.VISIBLE);
 
@@ -179,6 +240,7 @@ public class CommiteeFragment extends Fragment
                 }
 
                 //Downloading the committee pics
+                loadedMembers.clear();
                 for(int a = 0; a < photoUrls.size(); ++a)
                 {
                     Target target = new Target() {
@@ -298,10 +360,17 @@ public class CommiteeFragment extends Fragment
         {
             //Checking if the download belonged to the latest session
             if(timestamp == latestDownloadTimestamp)
-                committeeMembers.get(commPicassoDownloadTargets.get(target)).setPhoto(bmp);
+            {
+                CommitteeMember commMember = committeeMembers.get(commPicassoDownloadTargets.get(target));
+                if(!loadedMembers.contains(commMember))
+                {
+                    commMember.setPhoto(bmp);
+                    loadedMembers.add(commMember);
+                    Log.e("DWLD", commMember.getName());
+                }
+            }
 
-            commPicassoDownloadTargets.remove(target);
-            if(commPicassoDownloadTargets.isEmpty() && getView() != null)
+            if(timestamp == latestDownloadTimestamp && getView() != null && loadedMembers.size() == committeeMembers.size())
             {
                 //Displaying the recycler view
                 committeeRecyclerView.setVisibility(View.VISIBLE);
@@ -311,6 +380,14 @@ public class CommiteeFragment extends Fragment
 
                 //Updating the adapter
                 committeeRecyclerView.getAdapter().notifyDataSetChanged();
+
+                //Clearing the targets list
+                commPicassoDownloadTargets.clear();
+
+                //Caching the pics
+                BaseActivity baseActivity = (BaseActivity)getActivity();
+                int year = START_YEAR + yearSpinner.getSelectedItemPosition();
+                baseActivity.committePhotoCache.put(year, new ArrayList<CommitteeMember>(committeeMembers));
             }
         }
         else

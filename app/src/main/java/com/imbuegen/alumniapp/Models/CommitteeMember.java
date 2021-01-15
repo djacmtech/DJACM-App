@@ -50,4 +50,10 @@ public class CommitteeMember
     {
         this.photo = newPhoto;
     }
+
+    @Override
+    public int hashCode()
+    {
+        return (this.name.hashCode() + this.position.hashCode());
+    }
 }

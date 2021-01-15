@@ -1,110 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.CommiteeFragment"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
     >
-
-    <LinearLayout
-        android:id="@+id/faculty_div"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        tools:context=".Activity.CommiteeFragment"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         >
 
-        <TextView
-            android:id="@+id/faculty_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/faculty_title_text"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            />
-
-        <FrameLayout
+        <LinearLayout
+            android:id="@+id/faculty_div"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/faculty_recycler_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                />
-
-            <ProgressBar
-                android:id="@+id/faculty_loading_progressbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:visibility="invisible"
-                />
-
-        </FrameLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/committee_div"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@+id/faculty_div"
-        android:layout_marginTop="16dp">
-
-        <RelativeLayout
-            android:title="@+id/year_selection_div"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:orientation="vertical"
             >
 
             <TextView
-                android:id="@+id/committee_title"
+                android:id="@+id/faculty_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/committee_title_text"
+                android:text="@string/faculty_title_text"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 />
 
-            <Spinner
-                android:id="@+id/committee_year_spinner"
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:backgroundTint="@color/newUiArrowColor"
-                />
+                >
 
-        </RelativeLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/faculty_recycler_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    />
 
-        <FrameLayout
-            android:id="@+id/committee_frame"
+                <ProgressBar
+                    android:id="@+id/faculty_loading_progressbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="invisible"
+                    />
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/committee_div"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="fill_vertical">
+            android:orientation="vertical"
+            android:layout_below="@+id/faculty_div"
+            android:layout_marginTop="16dp">
 
-            <ProgressBar
-                android:id="@+id/committee_loading_progressbar"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:title="@+id/year_selection_div"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                />
+                >
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/committee_recycler_view"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/committee_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/committee_title_text"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    />
+
+                <Spinner
+                    android:id="@+id/committee_year_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@color/newUiArrowColor"
+                    />
+
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/committee_frame"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_gravity="center_horizontal"
-                />
+                android:layout_gravity="fill_vertical">
 
-        </FrameLayout>
-    </LinearLayout>
-</RelativeLayout>
+                <ProgressBar
+                    android:id="@+id/committee_loading_progressbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="invisible"
+                    />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/committee_recycler_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+            </FrameLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

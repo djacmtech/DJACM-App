@@ -74,8 +74,9 @@ public class BaseActivity extends AppCompatActivity {
 
                 navigation.getMenu().getItem(position).setChecked(true);
                 prevMenuItem = navigation.getMenu().getItem(position);
-                setTitle(navigation.getMenu().getItem(position).getTitle());
-
+                String title = navigation.getMenu().getItem(position).getTitle().toString();
+                getSupportActionBar().setTitle(title);
+                Log.e("Title", title);
 
             }
 

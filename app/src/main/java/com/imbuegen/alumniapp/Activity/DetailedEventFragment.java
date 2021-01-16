@@ -19,13 +19,13 @@
 package com.imbuegen.alumniapp.Activity;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,7 +40,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
@@ -49,15 +48,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.imbuegen.alumniapp.Adapters.DetailedEventAdapter;
-import com.imbuegen.alumniapp.Adapters.EventListAdapter;
-import com.imbuegen.alumniapp.Models.EventMember;
 import com.imbuegen.alumniapp.Models.EventModel;
 import com.imbuegen.alumniapp.NestedFragmentListener;
 import com.imbuegen.alumniapp.R;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,7 +102,6 @@ public class DetailedEventFragment extends Fragment {
         eventName =gt.getString("name","Placements 101");
         id = gt.getString("id",id);
         Log.v("event_id",id);
-        getActivity().setTitle(eventName);
         TextView tv = v.findViewById(R.id.et_name);
         tv.setText(eventName.toString());
         TextView tv1 = v.findViewById(R.id.et_body);

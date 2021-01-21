@@ -3,6 +3,7 @@ package com.imbuegen.alumniapp;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,30 +12,24 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.imbuegen.alumniapp.Activity.THRegistration;
+import com.imbuegen.alumniapp.Activity.UpcomingEventKnowMore;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class HomeFragment extends Fragment {
     NestedFragmentListener listener;
     Button screen1,screen2;
-    Button eventregister;
+    Button eventregister,knowmore;
     RecyclerView homepage_eventList;
     ImageView upcoming_event_pic;
     TextView event_name,event_date,event_desc;
@@ -61,11 +56,21 @@ public class HomeFragment extends Fragment {
         vision_msg = v.findViewById(R.id.vision_msg);
         mission_para1 = v.findViewById(R.id.mission_para1);
         mission_para2 = v.findViewById(R.id.mission_para2);
+        knowmore = v.findViewById(R.id.upcoming_events_knowmore);
         eventregister = v.findViewById(R.id.event_register_button);
+        final Uri event_link = Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLScGRu7o6Xza4But6NVX3pKMp0JqFNSWyz9sH5Yu4YsUjL27xA/viewform");
         eventregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), THRegistration.class));
+
+                Intent intent = new Intent(Intent.ACTION_VIEW,event_link);
+                startActivity(intent);
+            }
+        });
+        knowmore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), UpcomingEventKnowMore.class));
             }
         });
         getData();
@@ -111,7 +116,8 @@ public class HomeFragment extends Fragment {
                 event_name.setText(eventname);
                 event_date.setText(eventdate);
                 event_desc.setText(eventdesc);
-                Picasso.get().load(imageUri).resize(251,114).centerCrop().into(upcoming_event_pic);
+                Glide.with(getActivity()).load(imageUri).into(upcoming_event_pic);
+               // Picasso.get().load(imageUri).resize(251,114).centerCrop().into(upcoming_event_pic);
             }
 
             @Override

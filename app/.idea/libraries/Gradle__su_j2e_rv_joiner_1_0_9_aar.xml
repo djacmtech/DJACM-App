@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: su.j2e:rv-joiner:1.0.9@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/86ca57dd6d4228928dc982b1948b88c9/rv-joiner-1.0.9/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/86ca57dd6d4228928dc982b1948b88c9/rv-joiner-1.0.9/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/86ca57dd6d4228928dc982b1948b88c9/rv-joiner-1.0.9/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d8be0d508334e29225b66cbc499d299d/rv-joiner-1.0.9/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d8be0d508334e29225b66cbc499d299d/rv-joiner-1.0.9/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d8be0d508334e29225b66cbc499d299d/rv-joiner-1.0.9/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/su.j2e/rv-joiner/1.0.9/3a2ea29f540737928db2049e7a9f70303f1719ba/rv-joiner-1.0.9-javadoc.jar!/" />

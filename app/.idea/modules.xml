@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-294796958/DJACM-App.iml" filepath="$PROJECT_DIR$/.idea/modules/-294796958/DJACM-App.iml" group="DJACM-App" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app.iml" group="DJACM-App/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-294796958/DJACM-App.iml" filepath="$PROJECT_DIR$/.idea/modules/-294796958/DJACM-App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DJACM-App.app.iml" filepath="$PROJECT_DIR$/.idea/modules/DJACM-App.app.iml" />
     </modules>
   </component>
 </project>

@@ -16,34 +16,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <HorizontalScrollView
-                android:id="@+id/upcoming_events"
-                android:layout_width="match_parent"
-                android:padding="12dp"
-                android:layout_height="wrap_content">
+
+<!--            <HorizontalScrollView-->
+<!--                android:layout_below="@id/upcoming_events"-->
+<!--                android:id="@+id/upcoming_events"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:padding="8dp"-->
+<!--                android:layout_height="wrap_content">-->
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:background="@drawable/cardview_layerlist"
+                    android:orientation="vertical"
+                    android:id="@+id/upcoming_events"
                     android:shadowRadius="50">
+
+                    <TextView
+                        android:id="@+id/upcoming_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/alegreya_bold"
+                        android:gravity="left"
+                        android:layout_marginLeft="28dp"
+                        android:text="Upcoming Events!" />
 
 
                 <android.support.v7.widget.CardView
-                    android:layout_width="252dp"
-                    android:layout_height="244dp"
-                    android:background="@drawable/cardview_layerlist"
-                    app:cardCornerRadius="10dp"
-                    android:elevation="6dp"
-                    android:layout_margin="18dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="324dp"
+                    app:cardCornerRadius="24dp"
+                    android:elevation="40dp"
+                    android:layout_marginRight="28dp"
+                    android:layout_marginBottom="28dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="28dp">
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:background="#171636"
+                        android:background="@drawable/cardview_layerlist"
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:layout_width="250dp"
-                            android:layout_height="114dp"
+                            android:layout_width="345dp"
+                            android:layout_height="124dp"
+                            android:scaleType="centerCrop"
                             android:id="@+id/upcoming_event_pic"
                             android:layout_gravity="top|start"
                             android:foregroundGravity="top"
@@ -67,11 +83,14 @@
                                 android:id="@+id/eventname"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="4dp"
-                                android:fontFamily="@font/roboto_bold"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:fontFamily="@font/arbutus_slab"
                                 android:text="event name "
                                 android:textColor="#fff"
-                                android:textSize="13.5sp"
+                                android:textSize="14.5sp"
                                 android:textStyle="bold" />
                             <TextView
                                 android:layout_width="match_parent"
@@ -82,9 +101,16 @@
                                 android:textColor="#fff"
                                 android:layout_margin="4dp"
                                 android:text="description"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="8dp"
+                                android:layout_height="wrap_content">
+
                             <Button
-                                android:layout_width="101dp"
-                                android:layout_height="21dp"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="28dp"
                                 android:textSize="11sp"
                                 android:id="@+id/event_register_button"
                                 android:textColor="#fff"
@@ -93,11 +119,23 @@
                                 android:text="Register Now!"
                                 android:textAllCaps="false"
                                 />
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:textSize="11sp"
+                                    android:textColor="#fff"
+                                    android:id="@+id/upcoming_events_knowmore"
+                                    android:background="@drawable/qs_button_shape"
+                                    android:layout_margin="4dp"
+                                    android:textAllCaps="false"
+                                    android:layout_height="28dp"
+                                    android:text="Know More"/>
+                            </LinearLayout>
                         </LinearLayout>
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
                 </LinearLayout>
-            </HorizontalScrollView>
+<!--            </HorizontalScrollView>-->
 
             <LinearLayout
                 android:id="@+id/about_us"

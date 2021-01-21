@@ -143,7 +143,6 @@ public class CommiteeFragment extends Fragment
         yearSpinner = fragmentView.findViewById(R.id.committee_year_spinner);
         yearSpinner.setOnItemSelectedListener(spinnerItemSelectedListener);
         yearSpinner.setAdapter(years);
-        yearSpinner.setSelection(CURR_YEAR - START_YEAR - 1);
 
         return fragmentView;
     }
@@ -153,8 +152,8 @@ public class CommiteeFragment extends Fragment
     {
         super.onStart();
 
-        //Setting the initial year
-        //((Spinner)getView().findViewById(R.id.committee_year_spinner)).setSelection(CURR_YEAR - START_YEAR - 1);
+        //Setting the spinner default selection
+        ((Spinner)getView().findViewById(R.id.committee_year_spinner)).setSelection(CURR_YEAR - START_YEAR - 1);
     }
 
     @Override

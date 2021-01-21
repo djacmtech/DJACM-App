@@ -163,7 +163,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
-                    android:text="bla bla bla "
                     android:textColor="#fff"
                     android:textSize="12sp" />
 
@@ -173,7 +172,6 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_marginBottom="24dp"
-                    android:text="bla bla bla  second time "
                     android:textColor="#fff"
                     android:textSize="12sp" />
 
@@ -207,7 +205,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="24dp"
-                    android:text="our vision from db"
                     android:textSize="12sp"
                     android:textStyle="italic"
                     android:textColor="#fff" />

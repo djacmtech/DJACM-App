@@ -47,6 +47,7 @@
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="24dp"
                     android:elevation="40dp"
+                    android:id="@+id/event_cardview"
                     android:layout_marginRight="28dp"
                     android:layout_marginBottom="28dp"
                     android:layout_marginTop="10dp"

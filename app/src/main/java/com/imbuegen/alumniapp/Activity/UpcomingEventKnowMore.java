@@ -30,6 +30,7 @@ public class UpcomingEventKnowMore extends AppCompatActivity {
     ImageView event_pic1,event_pic2;
     ParticipantDetails participant;
     DatabaseReference reference;
+    Uri event_formlink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +38,13 @@ public class UpcomingEventKnowMore extends AppCompatActivity {
         setContentView(R.layout.upcomingevent_knowmore);
 
         Button eventregister = findViewById(R.id.ev_register_button);
-        final Uri event_form_link = Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLScGRu7o6Xza4But6NVX3pKMp0JqFNSWyz9sH5Yu4YsUjL27xA/viewform");
 
         event_topic = findViewById(R.id.event_topic);
         eventregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(Intent.ACTION_VIEW, event_form_link);
+                Intent intent = new Intent(Intent.ACTION_VIEW, event_formlink);
                 startActivity(intent);
             }
         });
@@ -65,6 +65,9 @@ public class UpcomingEventKnowMore extends AppCompatActivity {
                 String eventName = dataSnapshot.child("name").getValue().toString();
                 String imageUri1 = dataSnapshot.child("eventpic1").getValue().toString();
                 String imageUri2 = dataSnapshot.child("eventpic2").getValue().toString();
+                String formlink  = dataSnapshot.child("eventformlink").getValue().toString();
+                event_formlink =Uri.parse(formlink);
+
                 knowmoreinfo.setText(eventInfo);
                 event_topic.setText(eventName);
                 Glide.with(getApplicationContext()).load(imageUri1).into(event_pic1);

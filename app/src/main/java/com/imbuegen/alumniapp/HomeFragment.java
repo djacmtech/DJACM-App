@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,8 @@ public class HomeFragment extends Fragment {
     SharedPreferences.Editor editor;
     FirebaseDatabase db;
     TextView aboutus_firstpara,aboutus_secondpara,vision_msg,mission_para1,mission_para2;
+    CardView event_cardview;
+    Uri event_link;
 
     DatabaseReference reference;
     public HomeFragment()
@@ -58,7 +61,8 @@ public class HomeFragment extends Fragment {
         mission_para2 = v.findViewById(R.id.mission_para2);
         knowmore = v.findViewById(R.id.upcoming_events_knowmore);
         eventregister = v.findViewById(R.id.event_register_button);
-        final Uri event_link = Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLScGRu7o6Xza4But6NVX3pKMp0JqFNSWyz9sH5Yu4YsUjL27xA/viewform");
+        event_cardview = v.findViewById(R.id.event_cardview);
+
         eventregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,12 +71,14 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
         knowmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), UpcomingEventKnowMore.class));
             }
         });
+
         getData();
         event_name = v.findViewById(R.id.eventname);
         upcoming_event_pic = v.findViewById(R.id.upcoming_event_pic);
@@ -113,6 +119,8 @@ public class HomeFragment extends Fragment {
                 String eventdate = dataSnapshot.child("date").getValue().toString();
                 String eventdesc = dataSnapshot.child("description").getValue().toString();
                 String imageUri = dataSnapshot.child("eventpic").getValue().toString();
+                String formlink  = dataSnapshot.child("eventformlink").getValue().toString();
+                event_link =Uri.parse(formlink);
                 event_name.setText(eventname);
                 event_date.setText(eventdate);
                 event_desc.setText(eventdesc);

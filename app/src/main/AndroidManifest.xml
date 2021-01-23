@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/NewTheme"
         tools:replace="android:icon">
-        <activity android:name=".Activity.UpcomingEventKnowMore"/>
+        <activity android:name=".Activity.UpcomingEventKnowMore"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Activity.ResetPassword" />
         <activity android:name=".Activity.ApplicationForm" />
         <activity android:name=".Activity.StudentLog" />

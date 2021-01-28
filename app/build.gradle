@@ -9,7 +9,7 @@ android {
         versionCode 2
         versionName "1.1"
         vectorDrawables.useSupportLibrary = true
-
+        multiDexEnabled true
     }
     lintOptions{
         checkReleaseBuilds false

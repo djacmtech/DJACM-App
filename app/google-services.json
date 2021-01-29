@@ -47,7 +47,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:814508685135:android:6f1544867b8947a9",
         "android_client_info": {
-          "package_name": "com.imbuegen.alumniapp"
+          "package_name": "com.djacm.alumniapp"
         }
       },
       "oauth_client": [
@@ -55,7 +55,7 @@
           "client_id": "814508685135-5dughqskeugpau1d3lhmni2fblq42cnc.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.imbuegen.alumniapp",
+            "package_name": "com.djacm.alumniapp",
             "certificate_hash": "b8654e58f026772173896b6ee1b0352006cce86c"
           }
         },
@@ -63,7 +63,7 @@
           "client_id": "814508685135-5h5b7ko9g5rrl74i8ae8h715i75l4l6v.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.imbuegen.alumniapp",
+            "package_name": "com.djacm.alumniapp",
             "certificate_hash": "15da21cd5328743bc57d1f4701ddc005e953b15c"
           }
         },
@@ -71,7 +71,7 @@
           "client_id": "814508685135-aqtv9peifc7g753blunfabtfg7ju2edv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.imbuegen.alumniapp",
+            "package_name": "com.djacm.alumniapp",
             "certificate_hash": "db305374d3646ded7e75644d1abd6f2a4a3e1773"
           }
         },
@@ -79,7 +79,7 @@
           "client_id": "814508685135-c7mdp0bt4pq2db4v5su52vgh818d0fcq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.imbuegen.alumniapp",
+            "package_name": "com.djacm.alumniapp",
             "certificate_hash": "fdb5bd65f249cfc6d685f9fc974d3923ddc2dd4a"
           }
         },
@@ -87,7 +87,7 @@
           "client_id": "814508685135-ellaqgf63qsj6ju7qb244egn5lsmjjp3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.imbuegen.alumniapp",
+            "package_name": "com.djacm.alumniapp",
             "certificate_hash": "e0865f335ae914433a28493e50aec696343b0878"
           }
         },
@@ -95,7 +95,7 @@
           "client_id": "814508685135-inpg2vk10qt1mg4h86nto0jil3u69bjb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.imbuegen.alumniapp",
+            "package_name": "com.djacm.alumniapp",
             "certificate_hash": "9f621953291c50066f836ade840a8a0f2fef52cd"
           }
         },
@@ -103,7 +103,7 @@
           "client_id": "814508685135-jjn5k4a04h7hphr1l0m1290mp600iu2l.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.imbuegen.alumniapp",
+            "package_name": "com.djacm.alumniapp",
             "certificate_hash": "2691479af862a7dbdedc37cc1ee238dbc60cc456"
           }
         },
@@ -111,7 +111,7 @@
           "client_id": "814508685135-q19f6gdng1dbav83rn42gso1oufrj10m.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.imbuegen.alumniapp",
+            "package_name": "com.djacm.alumniapp",
             "certificate_hash": "759c18f0f3ef1dc567286d06ed59f268de333022"
           }
         },
@@ -119,7 +119,7 @@
           "client_id": "814508685135-rvla6ooqdirlpupa53trbg5ku3sista2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.imbuegen.alumniapp",
+            "package_name": "com.djacm.alumniapp",
             "certificate_hash": "ec7d2853e362ebc3d1583138911ac0cdcb19bd50"
           }
         },
@@ -127,7 +127,7 @@
           "client_id": "814508685135-uvh0ngr8h0bjnpo8mq0gm898hd3jcbq8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.imbuegen.alumniapp",
+            "package_name": "com.djacm.alumniapp",
             "certificate_hash": "91c2b07455307c140a48fb8a017a3c3b19dc215c"
           }
         },
@@ -135,7 +135,7 @@
           "client_id": "814508685135-vccadasdo500sfffjlunes0qdqpoah57.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.imbuegen.alumniapp",
+            "package_name": "com.djacm.alumniapp",
             "certificate_hash": "a653588d4dfed61e4222a363b2bc9ed27472e3db"
           }
         },

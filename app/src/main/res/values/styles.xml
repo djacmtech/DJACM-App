@@ -77,4 +77,16 @@
         <item name="android:textColorPrimary">@color/White</item>
     </style>
 
+    <style name="NewTheme.NoActionBar">
+        <item name="colorPrimary">@color/newColorPrimary</item>
+        <item name="colorPrimaryDark">@color/newColorPrimary</item>
+        <item name="colorAccent">@color/newColorPrimary</item>
+        <item name="android:windowBackground">@color/newColorPrimary</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:textColorSecondary">@color/White</item>
+        <item name="android:editTextColor">@color/White</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>

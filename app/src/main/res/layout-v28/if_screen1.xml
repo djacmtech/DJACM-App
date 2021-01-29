@@ -28,6 +28,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:id="@+id/upcoming_events"
+                    android:visibility="visible"
                     android:shadowRadius="50">
 
                     <TextView

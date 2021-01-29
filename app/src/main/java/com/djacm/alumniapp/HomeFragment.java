@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ public class HomeFragment extends Fragment {
     TextView aboutus_firstpara,aboutus_secondpara,vision_msg,mission_para1,mission_para2;
     CardView event_cardview;
     Uri event_link;
+    LinearLayout upcomingEventCardLayout;
 
     DatabaseReference reference;
     public HomeFragment()
@@ -61,6 +63,7 @@ public class HomeFragment extends Fragment {
         knowmore = v.findViewById(R.id.upcoming_events_knowmore);
         eventregister = v.findViewById(R.id.event_register_button);
         event_cardview = v.findViewById(R.id.event_cardview);
+        upcomingEventCardLayout = v.findViewById(R.id.upcoming_events);
 
         eventregister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,18 +116,25 @@ public class HomeFragment extends Fragment {
         reference = db.getReference("UpcomingEvent");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String eventname = dataSnapshot.child("name").getValue().toString();
-                String eventdate = dataSnapshot.child("date").getValue().toString();
-                String eventdesc = dataSnapshot.child("description").getValue().toString();
-                String imageUri = dataSnapshot.child("eventpic").getValue().toString();
-                String formlink  = dataSnapshot.child("eventformlink").getValue().toString();
-                event_link =Uri.parse(formlink);
-                event_name.setText(eventname);
-                event_date.setText(eventdate);
-                event_desc.setText(eventdesc);
-                Glide.with(getActivity()).load(imageUri).into(upcoming_event_pic);
-               // Picasso.get().load(imageUri).resize(251,114).centerCrop().into(upcoming_event_pic);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                int isActive = Integer.parseInt(dataSnapshot.child("isActive").getValue().toString());
+                if(isActive == 1)
+                {
+                    String eventname = dataSnapshot.child("name").getValue().toString();
+                    String eventdate = dataSnapshot.child("date").getValue().toString();
+                    String eventdesc = dataSnapshot.child("description").getValue().toString();
+                    String imageUri = dataSnapshot.child("eventpic").getValue().toString();
+                    String formlink = dataSnapshot.child("eventformlink").getValue().toString();
+                    event_link = Uri.parse(formlink);
+                    event_name.setText(eventname);
+                    event_date.setText(eventdate);
+                    event_desc.setText(eventdesc);
+                    if(getActivity() != null)
+                        Glide.with(getActivity()).load(imageUri).into(upcoming_event_pic);
+                }
+                else
+                    upcomingEventCardLayout.setVisibility(View.GONE);
             }
 
             @Override

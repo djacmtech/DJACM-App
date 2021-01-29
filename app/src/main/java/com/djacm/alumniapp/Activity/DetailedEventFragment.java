@@ -151,16 +151,19 @@ public class DetailedEventFragment extends Fragment {
                String url3;
                String url4;
                url1 = dataSnapshot.child(id).child("image1").getValue().toString();
-                Glide.with(getActivity()).load(url1).into(image1);
                 url2 = dataSnapshot.child(id).child("image2").getValue().toString();
-                Glide.with(getActivity()).load(url2).into(image2);
                 url3 = dataSnapshot.child(id).child("image3").getValue().toString();
-                Glide.with(getActivity()).load(url3).into(image3);
                 url4 = dataSnapshot.child(id).child("image4").getValue().toString();
-                Glide.with(getActivity()).load(url4).into(image4);
 
-
+                if(getActivity() != null)
+                {
+                    Glide.with(getActivity()).load(url1).into(image1);
+                    Glide.with(getActivity()).load(url2).into(image2);
+                    Glide.with(getActivity()).load(url3).into(image3);
+                    Glide.with(getActivity()).load(url4).into(image4);
                 }
+
+            }
 
 
             @Override

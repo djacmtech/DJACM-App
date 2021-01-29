@@ -22,7 +22,8 @@
         <activity android:name="com.djacm.alumniapp.Activity.ApplicationForm" />
         <activity android:name="com.djacm.alumniapp.Activity.StudentLog" />
         <activity android:name="com.djacm.alumniapp.Activity.AlumniLoginpg" />
-        <activity android:name="com.djacm.alumniapp.Activity.Register" />
+        <activity android:name="com.djacm.alumniapp.Activity.Register"
+            android:theme="@style/NewTheme.NoActionBar"/>
         <activity android:name="com.djacm.alumniapp.ui.login.LoginActivity"
             android:label="@string/title_activity_login" /> <!-- ======= -->
         <!-- tools:replace="android:icon"> -->
@@ -61,7 +62,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.djacm.alumniapp.Activity.RegistrationActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:screenOrientation="portrait" />

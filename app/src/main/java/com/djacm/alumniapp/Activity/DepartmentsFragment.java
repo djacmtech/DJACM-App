@@ -41,7 +41,7 @@ public class DepartmentsFragment extends Fragment// implements NestedFragmentLis
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // fragment layout === list of departments on alumni page
-        View v = inflater.inflate(R.layout.fragmentlayout, null);
+        View v = inflater.inflate(R.layout.departmentslayout, null);
         deptList = new ArrayList<>();
         deptListView = v.findViewById(R.id.list_depts);
      //   deptGridLayout = v.findViewById(R.id.list_depts);

@@ -52,6 +52,7 @@
         android:layout_marginTop="282dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="308dp"
+        android:textColorHint="#3BFBFE"
         android:hint="@string/prompt_email"
         android:textColor="#3BFBFE"
         android:inputType="textEmailAddress"
@@ -74,16 +75,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="362dp"
+        android:textColorHint="#3BFBFE"
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/passwords"
             android:layout_width="285dp"
             style="@style/email_pass_edit"
-            android:textColorHint="#3BFBFE"
             android:layout_height="wrap_content"
             android:layout_marginStart="45dp"
             android:layout_marginEnd="50dp"
+            android:textColorHint="#3BFBFE"
             android:hint="@string/prompt_password"
             android:imeActionId="6"
             android:textColor="#3BFBFE"

@@ -25,7 +25,7 @@
     <shape android:shape="oval">
         <size android:width="90dp"
             android:height="90dp"/>
-        <solid android:color="#fff"/>//Background Color
+        <solid android:color="#FFFFFF"/>//Background Color
     </shape>
 </item>
 </layer-list>

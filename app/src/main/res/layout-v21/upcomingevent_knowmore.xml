@@ -31,7 +31,7 @@
             android:id="@+id/event_pics"
             android:layout_margin="8dp"
             android:layout_below="@id/event_topic"
-            android:layout_height="wrap_content">
+            android:layout_height="200dp">
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -40,7 +40,6 @@
                 android:layout_marginRight="4dp"
                 app:srcCompat="@drawable/ic_launcher_background"
                 android:id="@+id/event_pic1"
-                android:layout_marginTop="20dp"
                 android:layout_height="match_parent"/>
             <ImageView
                 android:layout_width="0dp"
@@ -50,7 +49,6 @@
                 android:layout_marginRight="2dp"
                 app:srcCompat="@drawable/ic_launcher_background"
                 android:id="@+id/event_pic2"
-                android:layout_marginBottom="20dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
 

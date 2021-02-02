@@ -110,8 +110,10 @@ public class EventsFragment extends Fragment {
                     eventList.id = di.getKey();
                     eventModelList.add(eventList);
                 }
-                EventListAdapter adapter=new EventListAdapter(getActivity(),eventModelList,listener);
-                eventLists.setAdapter(adapter);
+                if(getActivity() != null) {
+                    EventListAdapter adapter = new EventListAdapter(getActivity(), eventModelList, listener);
+                    eventLists.setAdapter(adapter);
+                }
             }
 
             @Override

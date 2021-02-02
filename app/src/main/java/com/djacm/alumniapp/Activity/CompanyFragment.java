@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -176,7 +175,12 @@ SharedPreferences.Editor alumniargs;
     SearchView searchView = (SearchView)menuItem.getActionView();
 
     //Changing the search view icon
-    ((ImageView)searchView.findViewById(getActivity().getResources().getIdentifier("android:id/search_button",null,null))).setImageResource(R.drawable.search_icon);
+    int searchViewIconId = getResources().getIdentifier("android:id/search_button",null,null); //Identifier name obtained from searchView android xml layout (https://github.com/aosp-mirror/platform_frameworks_base/blob/master/core/res/res/layout/search_view.xml#L85)
+    ((ImageView)searchView.findViewById(searchViewIconId)).setImageResource(R.drawable.search_icon);
+
+    //Changing the search close icon
+    int searchCloseIconId = getResources().getIdentifier("android:id/search_close_btn", null, null);
+    ((ImageView)searchView.findViewById(searchCloseIconId)).setImageResource(R.drawable.close_icon);.
 
     searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
         @Override

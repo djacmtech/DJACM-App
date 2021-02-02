@@ -238,7 +238,8 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="36dp">
+                    android:layout_marginBottom="36dp"
+                    android:background="@color/White">
 
                     <View
                         android:layout_width="match_parent"
@@ -267,7 +268,8 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="36dp">
+                    android:layout_marginBottom="36dp"
+                    android:background="@color/White">
 
                     <View
                         android:layout_width="match_parent"

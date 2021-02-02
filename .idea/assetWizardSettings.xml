@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/E:/Android%20Studio/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/search/baseline_search_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../Android%20SDK/icons/material/materialicons/close/baseline_close_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -34,7 +34,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="search_icon" />
+                            <entry key="outputName" value="close_icon" />
                             <entry key="sourceFile" value="E:\Android Studio\Projects\DJACM-App\app\src\main\res\drawable\alumni.svg" />
                           </map>
                         </option>

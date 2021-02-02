@@ -59,11 +59,13 @@
         <item name="android:textColor">@color/White</item>
         <item name="android:textColorSecondary">@color/White</item>
         <item name="android:editTextColor">@color/White</item>
+        <item name="android:textCursorDrawable">@null</item>
     </style>
- 750
-    <style name="NewThemeActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
+
+    <style name="NewThemeActionBar" parent="@style/Widget.AppCompat.ActionBar">
         <item name="titleTextStyle">@style/NewThemeActionBarTitleText</item>
     </style>
+
 
     <style name="NewThemeActionBarTitleText" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/White</item>

@@ -61,7 +61,7 @@
                         <ImageView
                             android:layout_width="345dp"
                             android:layout_height="124dp"
-                            android:scaleType="centerCrop"
+                            android:scaleType="fitXY"
                             android:id="@+id/upcoming_event_pic"
                             android:layout_gravity="top|start"
                             android:foregroundGravity="top"
@@ -138,6 +138,146 @@
                 </android.support.v7.widget.CardView>
                 </LinearLayout>
 <!--            </HorizontalScrollView>-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/codebash_layout"
+                android:visibility="visible"
+                android:layout_below="@id/upcoming_events"
+                android:layout_height="wrap_content">
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                app:cardCornerRadius="17dp"
+                android:elevation="10dp"
+                android:id="@+id/codebash_img_cardView"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="170dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:id="@+id/codebash_img"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/ic_launcher_background"
+                    android:layout_height="match_parent"/>
+
+            </android.support.v7.widget.CardView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_below="@+id/codebash_img_cardView"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/round_status_layout"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    app:cardBackgroundColor="#171636"
+                    app:cardCornerRadius="12dp"
+                    android:elevation="10dp"
+                    android:layout_weight="1">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="12dp"
+                        android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/roundno1"
+                        android:textSize="20sp"
+                        android:text="Round 1 "
+                        android:textColor="#fff"
+                        android:fontFamily="@font/roboto_bold"
+                        android:layout_height="wrap_content"/>
+
+                        <View
+                            android:layout_width="7dp"
+                            android:layout_height="7dp"
+                            android:layout_below="@id/roundno1"
+                            android:id="@+id/ongoing_circle"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="4dp"
+                            android:background="@drawable/ongoing_circle" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="ongoing"
+                            android:textColor="#52E3B2"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"
+                            android:textSize="11sp"
+                            android:id="@+id/round_status_ongoing"
+                            android:layout_marginTop="8dp"
+                            android:layout_below="@id/roundno1"
+                            android:layout_toRightOf="@id/ongoing_circle"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ongoing_circle"
+                            android:id="@+id/round_date1"
+                            android:text="18th Feb ‘21-21st Feb ‘21"
+                            android:layout_marginBottom="12dp"
+                            android:layout_marginTop="6dp"/>
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    app:cardCornerRadius="12dp"
+                    android:elevation="10dp"
+                    app:cardBackgroundColor="#171636"
+                    android:layout_weight="1">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="12dp"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:id="@+id/roundno2"
+                            android:textSize="20sp"
+                            android:text="Round 2 "
+                            android:textColor="#fff"
+                            android:fontFamily="@font/roboto_bold"
+                            android:layout_height="wrap_content"/>
+
+                        <View
+                            android:layout_width="7dp"
+                            android:layout_height="7dp"
+                            android:layout_below="@id/roundno2"
+                            android:id="@+id/upcoming_circle_view"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="4dp"
+                            android:background="@drawable/upcoming_circle" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="upcoming"
+                            android:id="@+id/round_status_upcoming"
+                            android:textColor="#F74B42"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"
+                            android:textSize="11sp"
+                            android:layout_marginTop="8dp"
+                            android:layout_below="@id/roundno2"
+                            android:layout_toRightOf="@id/upcoming_circle_view"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/upcoming_circle_view"
+                            android:id="@+id/round_date2"
+                            android:text="18th Feb ‘21-21st Feb ‘21"
+                            android:layout_marginBottom="12dp"
+                            android:layout_marginTop="6dp"/>
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/about_us"
@@ -146,7 +286,7 @@
                 android:paddingBottom="12dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_below="@id/upcoming_events"
+                android:layout_below="@id/codebash_layout"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">

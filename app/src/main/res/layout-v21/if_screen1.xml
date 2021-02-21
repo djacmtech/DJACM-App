@@ -24,62 +24,65 @@
             <!--                android:padding="8dp"-->
             <!--                android:layout_height="wrap_content">-->
             <LinearLayout
+                android:id="@+id/upcoming_events"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:visibility="visible"
-                android:id="@+id/upcoming_events"
-                android:shadowRadius="50">
+                android:shadowRadius="50"
+                android:visibility="visible">
 
                 <TextView
                     android:id="@+id/upcoming_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="28dp"
                     android:layout_marginTop="12dp"
-                    android:textSize="20sp"
                     android:fontFamily="@font/alegreya_bold"
                     android:gravity="left"
-                    android:layout_marginLeft="28dp"
-                    android:text="Upcoming Events!" />
+                    android:text="Upcoming Events!"
+                    android:textSize="20sp" />
 
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/event_cardview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="24dp"
-                    android:elevation="40dp"
-                    android:id="@+id/event_cardview"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="28dp"
                     android:layout_marginBottom="28dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="28dp">
+                    android:elevation="40dp"
+                    app:cardCornerRadius="24dp">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:background="@drawable/cardview_layerlist"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/cardview_layerlist">
 
                         <ImageView
+                            android:id="@+id/upcoming_event_pic"
                             android:layout_width="345dp"
                             android:layout_height="124dp"
-                            android:scaleType="centerCrop"
-                            android:id="@+id/upcoming_event_pic"
                             android:layout_gravity="top|start"
                             android:foregroundGravity="top"
-                            app:srcCompat="@drawable/blue_button_background"/>
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/blue_button_background" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_below="@id/upcoming_event_pic"
                             android:layout_height="wrap_content"
+                            android:layout_below="@id/upcoming_event_pic"
                             android:layout_margin="12dp"
                             android:orientation="vertical">
+
                             <TextView
+                                android:id="@+id/eventdate"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="11sp"
-                                android:textColor="#fff"
-                                android:id="@+id/eventdate"
                                 android:layout_margin="4dp"
-                                android:text="date" />
+                                android:text="date"
+                                android:textColor="#fff"
+                                android:textSize="11sp" />
 
                             <TextView
                                 android:id="@+id/eventname"
@@ -94,62 +97,207 @@
                                 android:textColor="#fff"
                                 android:textSize="13.5sp"
                                 android:textStyle="bold" />
+
                             <TextView
+                                android:id="@+id/eventdesc"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textSize="11sp"
-                                android:id="@+id/eventdesc"
-                                android:textStyle="italic"
-                                android:textColor="#fff"
                                 android:layout_margin="2dp"
-                                android:text="description"/>
+                                android:text="description"
+                                android:textColor="#fff"
+                                android:textSize="11sp"
+                                android:textStyle="italic" />
+
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:orientation="horizontal"
+                                android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
-                                android:layout_height="wrap_content">
+                                android:orientation="horizontal">
 
                                 <Button
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="28dp"
-                                    android:textSize="11sp"
                                     android:id="@+id/event_register_button"
-                                    android:textColor="#fff"
+                                    android:layout_width="0dp"
+                                    android:layout_height="28dp"
                                     android:layout_margin="4dp"
+                                    android:layout_weight="1"
                                     android:background="@drawable/qs_button_shape"
                                     android:text="Register Now!"
                                     android:textAllCaps="false"
-                                    />
-                                <Button
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:textSize="11sp"
                                     android:textColor="#fff"
+                                    android:textSize="11sp" />
+
+                                <Button
                                     android:id="@+id/upcoming_events_knowmore"
-                                    android:background="@drawable/qs_button_shape"
-                                    android:layout_margin="4dp"
-                                    android:textAllCaps="false"
+                                    android:layout_width="0dp"
                                     android:layout_height="28dp"
-                                    android:text="Know More"/>
+                                    android:layout_margin="4dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/qs_button_shape"
+                                    android:text="Know More"
+                                    android:textAllCaps="false"
+                                    android:textColor="#fff"
+                                    android:textSize="11sp" />
                             </LinearLayout>
                         </LinearLayout>
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
             </LinearLayout>
             <!--            </HorizontalScrollView>-->
+            <android.support.v7.widget.CardView
+                android:id="@+id/codebash_layout"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_below="@id/upcoming_events"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="17dp">
+
+                <ImageView
+                    android:id="@+id/codebash_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/ic_launcher_background" />
+
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/round_status_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/codebash_layout"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:elevation="10dp"
+                    app:cardBackgroundColor="#171636"
+                    app:cardCornerRadius="12dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="12dp">
+
+                        <TextView
+                            android:id="@+id/roundno1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="Round 1 "
+                            android:textColor="#fff"
+                            android:textSize="20sp" />
+
+                        <View
+                            android:id="@+id/ongoing_circle"
+                            android:layout_width="7dp"
+                            android:layout_height="7dp"
+                            android:layout_below="@id/roundno1"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="4dp"
+                            android:background="@drawable/ongoing_circle" />
+
+                        <TextView
+                            android:id="@+id/round_status_ongoing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/roundno1"
+                            android:layout_marginTop="8dp"
+                            android:layout_toRightOf="@id/ongoing_circle"
+                            android:text="ongoing"
+                            android:textAllCaps="true"
+                            android:textColor="#52E3B2"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/round_date1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ongoing_circle"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="12dp"
+                            android:text="18th Feb ‘21-21st Feb ‘21" />
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:elevation="10dp"
+                    app:cardBackgroundColor="#171636"
+                    app:cardCornerRadius="12dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="12dp">
+
+                        <TextView
+                            android:id="@+id/roundno2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="Round 2 "
+                            android:textColor="#fff"
+                            android:textSize="20sp" />
+
+                        <View
+                            android:id="@+id/upcoming_circle_view"
+                            android:layout_width="7dp"
+                            android:layout_height="7dp"
+                            android:layout_below="@id/roundno2"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="4dp"
+                            android:background="@drawable/upcoming_circle" />
+
+                        <TextView
+                            android:id="@+id/round_status_upcoming"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/roundno2"
+                            android:layout_marginTop="8dp"
+                            android:layout_toRightOf="@id/upcoming_circle_view"
+                            android:text="upcoming"
+                            android:textAllCaps="true"
+                            android:textColor="#F74B42"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/round_date2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/upcoming_circle_view"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="12dp"
+                            android:text="18th Feb ‘21-21st Feb ‘21" />
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/about_us"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="12dp"
+                android:layout_below="@id/round_status_layout"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_below="@id/upcoming_events"
-                android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="12dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -172,10 +320,10 @@
                     android:id="@+id/about_us_secondpara"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:layout_marginBottom="24dp"
                     android:textColor="#fff"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -185,19 +333,19 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/about_us"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="12dp"
-                android:padding="12dp"
                 android:layout_marginLeft="27dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginRight="27dp"
                 android:background="#1C2653"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="12dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="30dp"
                     android:gravity="center_horizontal"
-                    android:layout_gravity="center_horizontal"
                     android:text="Our Vision"
                     android:textColor="#fff"
                     android:textSize="22sp" />
@@ -208,9 +356,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="24dp"
+                    android:textColor="#fff"
                     android:textSize="12sp"
-                    android:textStyle="italic"
-                    android:textColor="#fff" />
+                    android:textStyle="italic" />
 
             </LinearLayout>
 
@@ -219,20 +367,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/acm_vision"
-                android:padding="20dp"
-                android:paddingBottom="20dp"
                 android:layout_centerHorizontal="true"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:paddingBottom="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:gravity="center_horizontal"
                     android:layout_marginBottom="36dp"
+                    android:gravity="center_horizontal"
                     android:text="Our Mission"
-                    android:textSize="22sp"
-                    android:textColor="@color/White" />
+                    android:textColor="@color/White"
+                    android:textSize="22sp" />
 
                 <RelativeLayout
                     android:layout_width="50dp"
@@ -246,7 +394,7 @@
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
                         android:background="@drawable/alumni_shape"
-                        android:outlineAmbientShadowColor="@color/White"/>
+                        android:outlineAmbientShadowColor="@color/White" />
 
                     <ImageView
                         android:layout_width="20dp"
@@ -259,11 +407,12 @@
                     android:id="@+id/mission_para1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="mission para one "
                     android:layout_gravity="center_horizontal"
-                    android:gravity="center_horizontal"
                     android:layout_marginBottom="24dp"
+                    android:gravity="center_horizontal"
+                    android:text="mission para one "
                     android:textColor="@color/White" />
+
                 <RelativeLayout
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -276,7 +425,7 @@
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
                         android:background="@drawable/alumni_shape"
-                        android:outlineAmbientShadowColor="@color/White"/>
+                        android:outlineAmbientShadowColor="@color/White" />
 
                     <ImageView
                         android:layout_width="20dp"
@@ -286,13 +435,12 @@
                 </RelativeLayout>
 
 
-
                 <TextView
                     android:id="@+id/mission_para2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
                     android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
                     android:text="mission para two"
                     android:textColor="@color/White" />
 

@@ -31,5 +31,3 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="12dp" />
 </RelativeLayout>
-
-<!--android:lineHeight="16.2sp"-->

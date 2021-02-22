@@ -1,39 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:iconTint="#3CF7FB"
+        android:icon="@drawable/bottomnav_home"
         android:title="Home" />
 
     <item
         android:id="@+id/navigation_events"
-        android:icon="@drawable/ic_announcement_black_24dp"
-        android:iconTint="#3CF7FB"
+        android:icon="@drawable/bottomnav_event"
         android:title="Events" />
+
     <item
         android:id="@+id/navigation_committee"
-        android:icon="@drawable/ic_people_black_24dp"
-        android:iconTint="#3CF7FB"
+        android:icon="@drawable/people"
         android:title="Committee" />
     <item
         android:id="@+id/navigation_alumni"
-        android:icon="@drawable/ic_profile"
-        android:iconTint="#3CF7FB"
+        android:icon="@drawable/bottomnav_alumni"
         android:title="Alumni" />
 
 
-    <!--    <item-->
-    <!--        android:id="@+id/navigation_IF"-->
-    <!--        android:icon="@drawable/ic_people_black_24dp"-->
-    <!--        android:title="IF" />-->
+
+
 
 
     <!--    <item-->
-    <!--        android:id="@+id/navigation_internship"-->
-    <!--        android:title="Internship Fair"-->
-    <!--        android:icon="@drawable/blue_button_background"-->
-    <!--        />-->
+    <!--        android:id="@+id/navigation_home"-->
+    <!--        android:icon="@drawable/ic_baseline_home_24"-->
+    <!--        android:title="Home" />-->
+
 
 
 </menu>

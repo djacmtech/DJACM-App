@@ -2,8 +2,11 @@ package com.djacm.alumniapp.Activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -87,7 +90,6 @@ public class BaseActivity extends AppCompatActivity {
             }
         });
         setUpNavigation();
-
     }
 
     @Override
@@ -241,5 +243,19 @@ public class BaseActivity extends AppCompatActivity {
 
         }
         return true;
+    }
+
+    private void setUpNotificationChannel()
+    {
+        /*Sets up notification channel and handles topic
+
+        //Checking if android version is Oreo or above
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            //Creating the notifications channel
+            NotificationChannel notifChannel = new NotificationChannel(NOTIF_CHANNEL_NAME, NOTIF_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager notifManager = getSystemService(NotificationManager.class);
+            notifManager.createNotificationChannel(notifChannel);
+        }*/
     }
 }

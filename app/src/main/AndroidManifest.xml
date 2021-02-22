@@ -78,6 +78,7 @@
             android:name="com.djacm.alumniapp.Activity.AlumniLoginActivity"
             android:label="@string/title_activity_alumni_login"
             android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

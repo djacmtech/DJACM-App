@@ -35,8 +35,8 @@ public class BaseActivity extends AppCompatActivity {
     MenuItem prevMenuItem;
     StudentViewPagerAdaptor adapter;
 
-    //A cache for storing the yearwise photos of the committee
-    public HashMap<Integer, ArrayList<CommitteeMember>> committePhotoCache = new HashMap<Integer, ArrayList<CommitteeMember>>();
+    public HashMap<Integer, ArrayList<CommitteeMember>> committePhotoCache = new HashMap<Integer, ArrayList<CommitteeMember>>(); //A cache for storing the yearwise members of the committee
+    public ArrayList<CommitteeMember> facultyCache = new ArrayList<CommitteeMember>(); //Cache for storing the members of the faculty
 
     public void setActivity(Activity a) {
         activity = a;

@@ -3,7 +3,10 @@ package com.djacm.alumniapp.Service;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.ImageView;
+
 import com.djacm.alumniapp.Models.CommitteeMember;
 import com.djacm.alumniapp.R;
 import com.djacm.alumniapp.Activity.CommiteeFragment;
@@ -14,53 +17,47 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class CommitteePhotoDownloader extends AsyncTask<String,Void, Void>
+public class CommitteePhotoDownloader extends AsyncTask<String,Void, Bitmap>
 {
-    private ArrayList<CommitteeMember> members; //List of the members whose photos are to be updated
-    private CommiteeFragment fragment; //The committee fragment
-    private boolean isFaculty; //Tells whether the downloader is downloading faculty pics
+    private Object[] downloadContext;
 
-    public CommitteePhotoDownloader(ArrayList<CommitteeMember> members, CommiteeFragment fragment, boolean isFaculty)
+    public CommitteePhotoDownloader(Object[] downloadContext)
     {
-        this.members = members;
-        this.fragment = fragment;
-        this.isFaculty = isFaculty;
+        this.downloadContext = downloadContext;
     }
 
     @Override
-    protected Void doInBackground(String... uris)
+    protected Bitmap doInBackground(String... uris)
     {
-        for(int a = 0; a < uris.length; ++a)
+
+        URL urlConnection = null;
+        HttpURLConnection httpConnection = null;
+        InputStream stream = null;
+        try
         {
-            URL urlConnection = null;
-            HttpURLConnection httpConnection = null;
-            InputStream stream = null;
+            urlConnection = new URL(uris[0]);
+            httpConnection = (HttpURLConnection) urlConnection.openConnection();
+            httpConnection.setDoInput(true);
+            httpConnection.connect();
+
+            stream = httpConnection.getInputStream();
+            Bitmap downloadedImage = BitmapFactory.decodeStream(stream);
+
+            return downloadedImage;
+        }
+        catch (Exception e)
+        {
+            Log.e("IMG_DWLD", e.getMessage());
+        }
+        finally
+        {
             try
             {
-                urlConnection = new URL(uris[a]);
-                httpConnection = (HttpURLConnection) urlConnection.openConnection();
-                httpConnection.setDoInput(true);
-                httpConnection.connect();
-
-                stream = httpConnection.getInputStream();
-                Bitmap downloadedImage = BitmapFactory.decodeStream(stream);
-                members.get(a).setPhoto(downloadedImage);
+                stream.close();
             }
-            catch (Exception e)
+            catch(IOException exe)
             {
-                Log.e("IMG_DWLD", e.getMessage());
-                members.get(a).setPhoto(BitmapFactory.decodeResource(fragment.getContext().getResources(), R.drawable.default_committee_profile_pic));
-            }
-            finally
-            {
-                try
-                {
-                    stream.close();
-                }
-                catch(IOException exe)
-                {
 
-                }
             }
         }
 
@@ -68,8 +65,8 @@ public class CommitteePhotoDownloader extends AsyncTask<String,Void, Void>
     }
 
     @Override
-    protected void onPostExecute(Void result)
+    protected void onPostExecute(Bitmap result)
     {
-        //fragment.RecyclerViewUpdated(isFaculty);
+
     }
 }

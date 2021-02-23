@@ -181,14 +181,18 @@ public class HomeFragment extends Fragment {
                     String status2 = dataSnapshot.child("roundno2status").getValue().toString();
                     String roundnum2 = dataSnapshot.child("roundno2").getValue().toString();
                     String imageUri = dataSnapshot.child("codebashimg").getValue().toString();
-                    if(isOngoing==1){
-                        status_ongoing.setText(status1);
-                        status_ongoing.setTextColor(getResources().getColor(R.color.ongoingcolor));
-                        ongoing_circle_view.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.ongoing_circle));
-                    }else{
-                        status_ongoing.setText(status1);
-                        status_ongoing.setTextColor(getResources().getColor(R.color.upcomingcolor));
-                        ongoing_circle_view.setBackground(ContextCompat.getDrawable(getContext(),R.drawable.upcoming_circle));
+                    /// checking context/fragment null before setting text
+
+                    if(getContext()!=null) {
+                        if (isOngoing == 1) {
+                            status_ongoing.setText(status1);
+                            status_ongoing.setTextColor(getContext().getResources().getColor(R.color.ongoingcolor));
+                            ongoing_circle_view.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.ongoing_circle));
+                        } else {
+                            status_ongoing.setText(status1);
+                            status_ongoing.setTextColor(getContext().getResources().getColor(R.color.upcomingcolor));
+                            ongoing_circle_view.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.upcoming_circle));
+                        }
                     }
                     roundno1.setText(roundnum1);
                     roundno2.setText(roundnum2);

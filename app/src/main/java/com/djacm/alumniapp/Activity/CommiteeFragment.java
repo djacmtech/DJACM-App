@@ -137,7 +137,6 @@ public class CommiteeFragment extends Fragment {
     {
         /*Loads and displays the details of the faculty memebers for the given year*/
 
-        final BaseActivity baseActivity = (BaseActivity) getActivity();
         final int yearInt = Integer.parseInt(year);
         if (BaseActivity.committePhotoCache.containsKey(yearInt)) {
             //Getting the cached members list
@@ -204,7 +203,6 @@ public class CommiteeFragment extends Fragment {
         final ArrayList<CommitteeMember> facultyMembers = new ArrayList<CommitteeMember>(); //List of the faculty memebers
         facultyRecyclerView.setAdapter(new CommitteeAdapter(facultyMembers, true, (LinearLayoutManager)facultyRecyclerView.getLayoutManager()));
 
-        final BaseActivity baseActivity = (BaseActivity)getActivity(); //Getting instance of the base activity
         if(!BaseActivity.facultyCache.isEmpty())
         {
             //Loading the members from the cache

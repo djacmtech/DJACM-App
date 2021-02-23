@@ -139,9 +139,9 @@ public class CommiteeFragment extends Fragment {
 
         final BaseActivity baseActivity = (BaseActivity) getActivity();
         final int yearInt = Integer.parseInt(year);
-        if (baseActivity.committePhotoCache.containsKey(yearInt)) {
+        if (BaseActivity.committePhotoCache.containsKey(yearInt)) {
             //Getting the cached members list
-            ArrayList<CommitteeMember> cachedList = baseActivity.committePhotoCache.get(Integer.parseInt(year));
+            ArrayList<CommitteeMember> cachedList = BaseActivity.committePhotoCache.get(Integer.parseInt(year));
 
             //Updating the committee members list
             committeeMembers.clear();
@@ -183,7 +183,7 @@ public class CommiteeFragment extends Fragment {
 
                 //Caching the results
                 ArrayList<CommitteeMember> cachedList = new ArrayList<CommitteeMember>(committeeMembers);
-                ((BaseActivity) getActivity()).committePhotoCache.put(yearInt, cachedList);
+                BaseActivity.committePhotoCache.put(yearInt, cachedList);
             }
 
             @Override
@@ -205,15 +205,15 @@ public class CommiteeFragment extends Fragment {
         facultyRecyclerView.setAdapter(new CommitteeAdapter(facultyMembers, true, (LinearLayoutManager)facultyRecyclerView.getLayoutManager()));
 
         final BaseActivity baseActivity = (BaseActivity)getActivity(); //Getting instance of the base activity
-        if(!baseActivity.facultyCache.isEmpty())
+        if(!BaseActivity.facultyCache.isEmpty())
         {
             //Loading the members from the cache
 
             facultyMembers.clear();
 
-            for(int a  = 0; a < baseActivity.facultyCache.size(); ++a)
+            for(int a  = 0; a < BaseActivity.facultyCache.size(); ++a)
             {
-                facultyMembers.add(baseActivity.facultyCache.get(a));
+                facultyMembers.add(BaseActivity.facultyCache.get(a));
             }
 
             //Updating the adapter
@@ -244,7 +244,7 @@ public class CommiteeFragment extends Fragment {
                 }
 
                 //Caching the data
-                baseActivity.facultyCache = new ArrayList<CommitteeMember>(facultyMembers);
+                BaseActivity.facultyCache = new ArrayList<CommitteeMember>(facultyMembers);
 
                 //Updating the adapter
                 ((CommitteeAdapter)facultyRecyclerView.getAdapter()).currYear = 0;

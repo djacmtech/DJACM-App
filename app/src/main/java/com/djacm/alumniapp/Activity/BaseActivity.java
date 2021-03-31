@@ -203,6 +203,9 @@ public class BaseActivity extends AppCompatActivity {
 
                     viewPager.setCurrentItem(3);
                 }
+                if(menuItem.getItemId()==R.id.if_fragment){
+                    viewPager.setCurrentItem(4);
+                }
                 return false;            //loadFragment(fragment);
             }
         });

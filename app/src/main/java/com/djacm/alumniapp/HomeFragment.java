@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
     ImageView upcoming_event_pic;
     TextView event_name,event_date,event_desc;
     SharedPreferences.Editor editor;
-    FirebaseDatabase db;
+   static FirebaseDatabase db;
     TextView aboutus_firstpara,aboutus_secondpara,vision_msg,mission_para1,mission_para2;
     TextView roundno1,roundno2,status_upcoming,status_ongoing,round1_date,round2_date;
     View upcoming_circle_view,ongoing_circle_view;

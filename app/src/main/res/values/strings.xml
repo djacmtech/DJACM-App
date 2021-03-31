@@ -39,4 +39,6 @@
     <string name="submit_btn_txt">Submit</string>
     <string name="faculty_title_text">Faculty</string>
     <string name="committee_title_text">Core Members</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

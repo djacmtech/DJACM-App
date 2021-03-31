@@ -21,7 +21,7 @@
         android:title="Alumni" />
 
     <item android:id="@+id/if_fragment"
-        android:icon="@drawable/people"
+        android:icon="@drawable/bottomnav_if"
         android:title="IF"/>
 
 

@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.djacm.alumniapp.IF_Fragment;
+import com.djacm.alumniapp.Models.InternshipCompanyModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.djacm.alumniapp.Adapters.StudentViewPagerAdaptor;
 import com.djacm.alumniapp.HomeFragment;
@@ -38,6 +39,7 @@ public class BaseActivity extends AppCompatActivity {
     Activity activity;
     MenuItem prevMenuItem;
     StudentViewPagerAdaptor adapter;
+    public InternshipCompanyModel selectedIFCompany;
 
     public static HashMap<Integer, ArrayList<CommitteeMember>> committePhotoCache = new HashMap<Integer, ArrayList<CommitteeMember>>(); //A cache for storing the yearwise members of the committee
     public static ArrayList<CommitteeMember> facultyCache = new ArrayList<CommitteeMember>(); //Cache for storing the members of the faculty

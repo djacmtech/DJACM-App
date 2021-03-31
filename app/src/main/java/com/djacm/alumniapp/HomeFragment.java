@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
     TextView event_name,event_date,event_desc;
     SharedPreferences.Editor editor;
    static FirebaseDatabase db;
-    TextView aboutus_firstpara,aboutus_secondpara,vision_msg,mission_para1,mission_para2;
+    TextView aboutus_firstpara,aboutus_secondpara,vision_msg,mission_para1,mission_para2,mission_para3,mission_para4,mission_para5;
     TextView roundno1,roundno2,status_upcoming,status_ongoing,round1_date,round2_date;
     View upcoming_circle_view,ongoing_circle_view;
     ImageView codebash_img;
@@ -68,6 +68,9 @@ public class HomeFragment extends Fragment {
         vision_msg = v.findViewById(R.id.vision_msg);
         mission_para1 = v.findViewById(R.id.mission_para1);
         mission_para2 = v.findViewById(R.id.mission_para2);
+        mission_para3 = v.findViewById(R.id.mission_para3);
+        mission_para4 = v.findViewById(R.id.mission_para4);
+        mission_para5 = v.findViewById(R.id.mission_para5);
         knowmore = v.findViewById(R.id.upcoming_events_knowmore);
         eventregister = v.findViewById(R.id.event_register_button);
         event_cardview = v.findViewById(R.id.event_cardview);
@@ -117,11 +120,17 @@ public class HomeFragment extends Fragment {
                 String visionmsg = dataSnapshot.child("Vision").getValue().toString();
                 String mission1 = dataSnapshot.child("mission1").getValue().toString();
                 String mission2 = dataSnapshot.child("missionpart2").getValue().toString();
+                String mission3 = dataSnapshot.child("missionpart3").getValue().toString();
+                String mission4 = dataSnapshot.child("missionpart4").getValue().toString();
+                String mission5 = dataSnapshot.child("missionpart5").getValue().toString();
                 aboutus_firstpara.setText(aboutUs1);
                 aboutus_secondpara.setText(aboutUs2);
                 vision_msg.setText(visionmsg);
                 mission_para1.setText(mission1);
                 mission_para2.setText(mission2);
+                mission_para3.setText(mission3);
+                mission_para4.setText(mission4);
+                mission_para5.setText(mission5);
             }
 
             @Override

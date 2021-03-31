@@ -1,11 +1,14 @@
 package com.djacm.alumniapp.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.djacm.alumniapp.Activity.BaseActivity;
 import com.djacm.alumniapp.Activity.InternshipCompany;
 import com.djacm.alumniapp.InternshipCompanyClickListener;
 import com.djacm.alumniapp.InternshipHolder;
@@ -32,14 +36,15 @@ import java.util.HashMap;
 public class InternshipCompanyAdapter extends RecyclerView.Adapter<InternshipHolder>
 {
     SharedPreferences.Editor editor;
-    Context mContext;
+    Activity mContext;
+
     public ArrayList<InternshipCompanyModel> models;
     NestedFragmentListener listener;
 
     private LinearLayoutManager layoutManager; //The layout manager associated with the recycler view
     private HashMap<Target,Object[]> targets = new java.util.HashMap<Target, Object[]>(); //HashMap for storing the objects associated with the Picasso Targets used for retrieving logo pics from firebase storage
 
-    public InternshipCompanyAdapter(Context mContext, ArrayList<InternshipCompanyModel> models,NestedFragmentListener listener, LinearLayoutManager lm) {
+    public InternshipCompanyAdapter(Activity mContext, ArrayList<InternshipCompanyModel> models,NestedFragmentListener listener, LinearLayoutManager lm) {
         this.mContext = mContext;
         this.models = models;
         this.listener=listener;
@@ -67,11 +72,12 @@ public class InternshipCompanyAdapter extends RecyclerView.Adapter<InternshipHol
             @Override
             public void onClick(View v)
             {
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("COMPANY_OBJECT",models.get(pos));
+                ((BaseActivity)mContext).selectedIFCompany=models.get(pos);
+                SharedPreferences.Editor editor = mContext.getSharedPreferences("SwitchTo",Context.MODE_PRIVATE).edit();
+                editor.putString("goto","IntDet");
+                editor.commit();listener.onSwitchToNextFragment();
             }
         });
-
         if(models.get(i).getLogoBmp() == null)
         {
             Target picassoTarget = new Target() {

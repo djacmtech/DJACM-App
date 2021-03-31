@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.djacm.alumniapp.Adapters.CompanyListAdapter;
@@ -65,7 +66,7 @@ public class InternshipCompany extends Fragment
         //Initializing recycler view
         RecyclerView companiesRv = fragmentView.findViewById(R.id.IF_companies_rv);
         companiesRv.setLayoutManager(new LinearLayoutManager(getContext()));
-        companiesAdapter = new InternshipCompanyAdapter(getContext(),techCompanies, listener,(LinearLayoutManager)companiesRv.getLayoutManager());
+        companiesAdapter = new InternshipCompanyAdapter(getActivity(),techCompanies, listener,(LinearLayoutManager)companiesRv.getLayoutManager());
         companiesRv.setAdapter(companiesAdapter);
 
         //Initializing tab layout listener
@@ -76,6 +77,8 @@ public class InternshipCompany extends Fragment
                 .setTag("N_TECH");
         tabLayout.addTab(techTab);
         tabLayout.addTab(nonTechTab);
+        tabLayout.setTabTextColors(ContextCompat.getColor(getContext(), R.color.White),ContextCompat.getColor(getContext(), R.color.White));
+        tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(getContext(), R.color.nav_selected_color));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab)

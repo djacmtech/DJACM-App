@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.djacm.alumniapp.IF_Fragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.djacm.alumniapp.Adapters.StudentViewPagerAdaptor;
 import com.djacm.alumniapp.HomeFragment;
@@ -125,7 +126,7 @@ public class BaseActivity extends AppCompatActivity {
                 ((AlumniInfoFragment) adapter.getItem(3)).backPressed();
 
             } else if (adapter.getItem(3) instanceof DepartmentsFragment) {
-                finish();
+                viewPager.setCurrentItem(0);
 
             }
         } else if (viewPager.getCurrentItem() == 1) {
@@ -133,28 +134,29 @@ public class BaseActivity extends AppCompatActivity {
                 ((DetailedEventFragment) adapter.getItem(1)).backPressed();
 
             } else if (adapter.getItem(1) instanceof EventsFragment) {
-                finish();
+                viewPager.setCurrentItem(0);
 
             }
-        } else if (viewPager.getCurrentItem() == 0) {
-            if (adapter.getItem(0) instanceof ApplicationForm) {
-                ((ApplicationForm) adapter.getItem(3)).backPressed();
+        } else if (viewPager.getCurrentItem() == 4) {
+            if (adapter.getItem(4) instanceof ApplicationForm) {
+                ((ApplicationForm) adapter.getItem(4)).backPressed();
 
-            } else if (adapter.getItem(0) instanceof Screen2Fragment) {
-                ((Screen2Fragment) adapter.getItem(0)).backPressed();
+            } else if (adapter.getItem(4) instanceof IF_Fragment) {
+                viewPager.setCurrentItem(0);
 
-            } else if (adapter.getItem(0) instanceof InternshipCompany) {
-                ((InternshipCompany) adapter.getItem(0)).backPressed();
+            } else if (adapter.getItem(4) instanceof InternshipCompany) {
+                ((InternshipCompany) adapter.getItem(4)).backPressed();
 
-            } else if (adapter.getItem(0) instanceof InternshipDetails) {
-                ((InternshipDetails) adapter.getItem(0)).backPressed();
-
-            } else if (adapter.getItem(0) instanceof HomeFragment) {
-                finish();
+            } else if (adapter.getItem(4) instanceof InternshipDetails) {
+                ((InternshipDetails) adapter.getItem(4)).backPressed();
 
             }
         }
         else if(viewPager.getCurrentItem() == 2)
+        {
+            viewPager.setCurrentItem(0);
+        }
+        else if (viewPager.getCurrentItem() == 0)
         {
             finishAffinity();
         }

@@ -96,8 +96,9 @@ public class StudentViewPagerAdaptor extends FragmentStatePagerAdapter {
                     break;
                 case "IF":
                     editor.clear().commit();
-                    fm.beginTransaction().remove(Home).commit();
-                    Home = new IF_Fragment(listener);
+                    fm.beginTransaction().remove(IF)
+                            .commit();
+                    IF = new IF_Fragment(listener);
                     break;
                 case "IfComp":
                     editor.clear().commit();
@@ -142,7 +143,8 @@ public class StudentViewPagerAdaptor extends FragmentStatePagerAdapter {
                     Home = new HomeFragment(listener);
                 return Home;
             case 4 :
-               IF = new IF_Fragment(listener);
+               if(IF == null)
+                    IF = new IF_Fragment(listener);
                return IF;
             default:
                 return null;

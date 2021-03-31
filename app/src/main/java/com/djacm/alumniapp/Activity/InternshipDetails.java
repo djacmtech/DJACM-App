@@ -110,7 +110,7 @@ public class InternshipDetails extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 InternshipCompanyModel internshipCompanyModel=dataSnapshot.getValue(InternshipCompanyModel.class);
-                companyDesc.setText(internshipCompanyModel.getDescription());
+                //companyDesc.setText(internshipCompanyModel.getDescription());
 
             }
 

@@ -122,17 +122,6 @@ public class CommiteeFragment extends Fragment {
         super.onStop();
     }
 
-    public void backPressed()
-    {
-        if (getContext() != null) {
-            SharedPreferences.Editor sharedPref = getContext().getSharedPreferences("SwitchTo", Context.MODE_PRIVATE).edit();
-            sharedPref.putString("goto", "Comp");
-            sharedPref.commit();
-
-            fragmentListener.onSwitchToNextFragment();
-        }
-    }
-
     private void displayCommitteeMembers(String year)
     {
         /*Loads and displays the details of the faculty memebers for the given year*/

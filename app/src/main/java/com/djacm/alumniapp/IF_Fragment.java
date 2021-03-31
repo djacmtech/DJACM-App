@@ -1,9 +1,12 @@
 package com.djacm.alumniapp;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,13 +23,15 @@ import com.google.firebase.database.ValueEventListener;
 
 
 @SuppressLint("ValidFragment")
-public class IF_Fragment extends Fragment {
-
-
+public class IF_Fragment extends Fragment
+{
+    private StudentViewPagerAdaptor.FragmentListener listener;
 
     @SuppressLint("ValidFragment")
     public IF_Fragment(StudentViewPagerAdaptor.FragmentListener listener) {
         // Required empty public constructor
+
+        this.listener = listener;
     }
 
     @Override
@@ -43,12 +48,26 @@ public class IF_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =inflater.inflate(R.layout.fragment_i_f_, container, false);
+
         if_imageView = v.findViewById(R.id.if_image);
         if_info1 = v.findViewById(R.id.if_info1);
         if_info2 = v.findViewById(R.id.if_info2);
         goto_company_list_bt = v.findViewById(R.id.gotocompanyList_bt);
         register_if = v.findViewById(R.id.registerIF_bt);
         getIFInformation();
+
+        AppCompatButton companyListBtn = v.findViewById(R.id.gotocompanyList_bt);
+        companyListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                SharedPreferences.Editor editor=getActivity().getSharedPreferences("SwitchTo", Context.MODE_PRIVATE).edit();
+                editor.putString("goto","IfComp");
+                editor.commit();
+                listener.onSwitchToNextFragment();
+            }
+        });
+
         return v;
     }
 

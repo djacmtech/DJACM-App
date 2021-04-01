@@ -73,9 +73,12 @@ public class InternshipCompanyAdapter extends RecyclerView.Adapter<InternshipHol
             public void onClick(View v)
             {
                 ((BaseActivity)mContext).selectedIFCompany=models.get(pos);
+                BaseActivity.currIFCompanyPos = pos;
+
                 SharedPreferences.Editor editor = mContext.getSharedPreferences("SwitchTo",Context.MODE_PRIVATE).edit();
                 editor.putString("goto","IntDet");
-                editor.commit();listener.onSwitchToNextFragment();
+                editor.commit();
+                listener.onSwitchToNextFragment();
             }
         });
         if(models.get(i).getLogoBmp() == null)

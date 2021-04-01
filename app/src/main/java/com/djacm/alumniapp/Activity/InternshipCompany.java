@@ -45,9 +45,6 @@ public class InternshipCompany extends Fragment
     private DatabaseReference dbRef;
     private InternshipCompanyAdapter companiesAdapter;
 
-    private ArrayList<InternshipCompanyModel> techCompanies = new ArrayList<>();
-    private ArrayList<InternshipCompanyModel> nonTechCompanies = new ArrayList<>();
-
     public InternshipCompany(){}
     @SuppressLint("ValidFragment")
     public InternshipCompany(NestedFragmentListener listener){
@@ -66,7 +63,7 @@ public class InternshipCompany extends Fragment
         //Initializing recycler view
         RecyclerView companiesRv = fragmentView.findViewById(R.id.IF_companies_rv);
         companiesRv.setLayoutManager(new LinearLayoutManager(getContext()));
-        companiesAdapter = new InternshipCompanyAdapter(getActivity(),techCompanies, listener,(LinearLayoutManager)companiesRv.getLayoutManager());
+        companiesAdapter = new InternshipCompanyAdapter(getActivity(),BaseActivity.techCompanies, listener,(LinearLayoutManager)companiesRv.getLayoutManager());
         companiesRv.setAdapter(companiesAdapter);
 
         //Initializing tab layout listener
@@ -107,6 +104,9 @@ public class InternshipCompany extends Fragment
         ProgressBar progressBar = fragmentView.findViewById(R.id.IF_companies_pb);
         progressBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(getActivity(), R.color.White), PorterDuff.Mode.SRC_IN);
 
+        //Scrolling the recycler view to the required position
+        companiesRv.scrollToPosition(BaseActivity.currIFCompanyPos);
+
         return fragmentView;
     }
 
@@ -132,9 +132,9 @@ public class InternshipCompany extends Fragment
     {
         /*Loads and displays the list of tech companies*/
 
-        if(techCompanies.size() != 0)
+        if(BaseActivity.techCompanies.size() != 0)
         {
-            companiesAdapter.models = techCompanies;
+            companiesAdapter.models = BaseActivity.techCompanies;
             companiesAdapter.notifyDataSetChanged();
             return;
         }
@@ -147,7 +147,7 @@ public class InternshipCompany extends Fragment
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
-                companiesAdapter.models = techCompanies;
+                companiesAdapter.models = BaseActivity.techCompanies;
 
                 for(DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
@@ -179,9 +179,9 @@ public class InternshipCompany extends Fragment
     {
         /*Loads and displays the list of non-tech companies*/
 
-        if(nonTechCompanies.size() != 0)
+        if(BaseActivity.nonTechCompanies.size() != 0)
         {
-            companiesAdapter.models = nonTechCompanies;
+            companiesAdapter.models = BaseActivity.nonTechCompanies;
             companiesAdapter.notifyDataSetChanged();
             return;
         }
@@ -194,7 +194,7 @@ public class InternshipCompany extends Fragment
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
-                companiesAdapter.models = nonTechCompanies;
+                companiesAdapter.models = BaseActivity.nonTechCompanies;
 
                 for(DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
@@ -218,51 +218,5 @@ public class InternshipCompany extends Fragment
     }
 
 }
-
-/*
-ArrayList<InternshipCompanyModel> internshipCompanyModels=new ArrayList<>();
-    RecyclerView mRecyclerView;
-    InternshipCompanyAdapter internshipCompanyAdapter;
-    DatabaseReference databaseReference;
-
-mRecyclerView=v.findViewById(R.id.internship_recyclerView);
-
-
-
-        /*mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-     databaseReference= FirebaseDatabase.getInstance().getReference().child("Companies");
-
-     databaseReference.addValueEventListener(new ValueEventListener() {
-         @Override
-         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-             if(dataSnapshot.exists())
-             {   internshipCompanyModels.clear();
-
-                 for(DataSnapshot companysnapshot:dataSnapshot.getChildren())
-                 {
-                     InternshipCompanyModel internshipCompanyModel=companysnapshot.getValue(InternshipCompanyModel.class);
-                     Log.d("NAME",internshipCompanyModel.getName());
-
-                     internshipCompanyModels.add(internshipCompanyModel);
-                 }
-
-                 internshipCompanyAdapter=new InternshipCompanyAdapter(getContext() ,internshipCompanyModels,listener);
-                 mRecyclerView.setAdapter(internshipCompanyAdapter);
-             }
-
-             else
-             {
-                 Log.d("NAME2","Broooooooooooooooooooooooo");
-             }
-         }
-
-         @Override
-         public void onCancelled(@NonNull DatabaseError databaseError) {
-
-         }
-     });*/
-
 
 

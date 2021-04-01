@@ -44,6 +44,10 @@ public class BaseActivity extends AppCompatActivity {
     public static HashMap<Integer, ArrayList<CommitteeMember>> committePhotoCache = new HashMap<Integer, ArrayList<CommitteeMember>>(); //A cache for storing the yearwise members of the committee
     public static ArrayList<CommitteeMember> facultyCache = new ArrayList<CommitteeMember>(); //Cache for storing the members of the faculty
 
+    public static ArrayList<InternshipCompanyModel> techCompanies = new ArrayList<>(); //The IF tech companies
+    public static ArrayList<InternshipCompanyModel> nonTechCompanies = new ArrayList<>(); //The IF non-tech companies
+    public static int currIFCompanyPos = 0;
+
     public void setActivity(Activity a) {
         activity = a;
     }

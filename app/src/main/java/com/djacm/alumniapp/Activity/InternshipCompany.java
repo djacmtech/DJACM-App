@@ -151,9 +151,15 @@ public class InternshipCompany extends Fragment
 
                 for(DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
-                    companiesAdapter.models.add(new InternshipCompanyModel(snapshot.child("Skills").getValue().toString(), snapshot.child("CmpDscr").getValue().toString(),snapshot.child("Name").getValue().toString(),
-                            snapshot.child("LogoUrl").getValue().toString(),snapshot.child("JobDscr").getValue().toString(),snapshot.child("Perks").getValue().toString(),
-                            Integer.parseInt(snapshot.child("Stipend").getValue().toString()),snapshot.child("WebsiteUrl").getValue().toString().trim()));
+                    companiesAdapter.models.add(new InternshipCompanyModel(snapshot.child("Skills").getValue().toString(),
+                            snapshot.child("CmpDscr").getValue().toString(),
+                            snapshot.child("Name").getValue().toString(),
+                            snapshot.child("LogoUrl").getValue().toString(),
+                            snapshot.child("JobDscr").getValue().toString(),
+                            snapshot.child("Perks").getValue().toString(),
+                            Integer.parseInt(snapshot.child("Stipend").getValue().toString()),
+                            snapshot.child("WebsiteUrl").getValue().toString().trim(),
+                            snapshot.child("Domain").getValue().toString()));
                 }
 
                 companiesAdapter.notifyDataSetChanged();
@@ -194,7 +200,8 @@ public class InternshipCompany extends Fragment
                 {
                     companiesAdapter.models.add(new InternshipCompanyModel(snapshot.child("Skills").getValue().toString(), snapshot.child("CmpDscr").getValue().toString(),snapshot.child("Name").getValue().toString(),
                             snapshot.child("LogoUrl").getValue().toString(),snapshot.child("JobDscr").getValue().toString(),snapshot.child("Perks").getValue().toString(),
-                            Integer.parseInt(snapshot.child("Stipend").getValue().toString()),snapshot.child("WebsiteUrl").getValue().toString().trim()));
+                            Integer.parseInt(snapshot.child("Stipend").getValue().toString()),snapshot.child("WebsiteUrl").getValue().toString().trim(),
+                            snapshot.child("Domain").getValue().toString()));
                 }
 
                 companiesAdapter.notifyDataSetChanged();

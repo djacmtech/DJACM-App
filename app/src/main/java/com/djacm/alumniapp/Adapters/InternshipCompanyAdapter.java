@@ -65,7 +65,7 @@ public class InternshipCompanyAdapter extends RecyclerView.Adapter<InternshipHol
     public void onBindViewHolder(@NonNull final InternshipHolder internshipHolder, int i)
     {
         internshipHolder.mTitle.setText(models.get(i).getName());
-        internshipHolder.mDescription.setText(models.get(i).getSkills());
+        internshipHolder.mDescription.setText(models.get(i).getDomain());
 
         final int pos = i;
         internshipHolder.cardLayout.setOnClickListener(new View.OnClickListener() {

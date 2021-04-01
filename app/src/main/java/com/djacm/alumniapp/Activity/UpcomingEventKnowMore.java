@@ -68,7 +68,7 @@ public class UpcomingEventKnowMore extends AppCompatActivity {
                 String formlink  = dataSnapshot.child("eventformlink").getValue().toString();
                 event_formlink =Uri.parse(formlink);
 
-                knowmoreinfo.setText(eventInfo);
+                knowmoreinfo.setText(eventInfo.replaceAll("\n","\n"));
                 event_topic.setText(eventName);
                 Glide.with(getApplicationContext()).load(imageUri1).into(event_pic1);
                 Glide.with(getApplicationContext()).load(imageUri2).into(event_pic2);

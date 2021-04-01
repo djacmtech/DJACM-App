@@ -307,6 +307,7 @@
 
                 <TextView
                     android:id="@+id/about_us_firstpara"
+                    tools:text="about us first para"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
@@ -318,6 +319,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
+                    tools:text="about us second para"
                     android:layout_marginBottom="24dp"
                     android:textColor="#fff"
                     android:textSize="12sp" />
@@ -353,6 +355,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="24dp"
                     android:textSize="12sp"
+                    tools:text="our vision"
                     android:textStyle="italic"
                     android:textColor="#fff" />
 

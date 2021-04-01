@@ -106,8 +106,8 @@ public class IF_Fragment extends Fragment
                 if(getActivity()!=null){
                     Glide.with(getActivity()).load(IF_imageuri).into(if_imageView);
                 }
-                if_info1.setText(IF_info1_string);
-                if_info2.setText(IF_info2_string);
+                if_info1.setText(IF_info1_string.replaceAll("\n","\n"));
+                if_info2.setText(IF_info2_string.replaceAll("\n","\n"));
 
             }
 

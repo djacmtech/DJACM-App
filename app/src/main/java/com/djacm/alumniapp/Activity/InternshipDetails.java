@@ -80,10 +80,12 @@ public class InternshipDetails extends Fragment {
 
         shpref = getContext().getSharedPreferences("IntDet", Context.MODE_PRIVATE);
         final InternshipCompanyModel companyModel = ((BaseActivity) getActivity()).selectedIFCompany;
-        Toast.makeText(getContext(), companyModel.getName(), Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(getContext(), companyModel.getName(), Toast.LENGTH_SHORT).show();
         companyTitle.setText(companyModel.getName());
         companyDesc.setText(companyModel.getCompanyDescription());
-        job_desc.setText(companyModel.getJobDescription());
+        String job_des = companyModel.getJobDescription();
+        job_desc.setText(job_des.replaceAll("\n","\n"));
+        String skill = companyModel.getSkills();
         website = companyModel.getWebsiteUrl();
         companyWebsite.setText(website);
         companyWebsite.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +106,7 @@ public class InternshipDetails extends Fragment {
             }
         });
 
-        companySkills.setText(companyModel.getSkills());
+        companySkills.setText(skill.replaceAll("\n","\n"));
         stipend.setText("Rs. " + companyModel.getStipend());
         perks_offered.setText(companyModel.getPerks());
         companyImage.setImageBitmap(companyModel.getLogoBmp());

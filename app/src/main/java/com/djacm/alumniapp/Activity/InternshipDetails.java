@@ -1,12 +1,17 @@
 package com.djacm.alumniapp.Activity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +45,7 @@ public class InternshipDetails extends Fragment {
     NestedFragmentListener listener;
     SharedPreferences.Editor editor;
     SharedPreferences shpref;
+    String website;
 
     public InternshipDetails() {
     }
@@ -57,6 +63,7 @@ public class InternshipDetails extends Fragment {
         listener.onSwitchToNextFragment();
     }
 
+    @SuppressLint("SetTextI18n")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -72,16 +79,44 @@ public class InternshipDetails extends Fragment {
         perks_offered = v.findViewById(R.id.perks_offered);
 
         shpref = getContext().getSharedPreferences("IntDet", Context.MODE_PRIVATE);
-        InternshipCompanyModel companyModel = ((BaseActivity) getActivity()).selectedIFCompany;
+        final InternshipCompanyModel companyModel = ((BaseActivity) getActivity()).selectedIFCompany;
         Toast.makeText(getContext(), companyModel.getName(), Toast.LENGTH_SHORT).show();
         companyTitle.setText(companyModel.getName());
         companyDesc.setText(companyModel.getCompanyDescription());
         job_desc.setText(companyModel.getJobDescription());
-        companyWebsite.setText(companyModel.getWebsiteUrl());
+        website = companyModel.getWebsiteUrl();
+        companyWebsite.setText(website);
+        companyWebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                try
+                {
+                    Uri webpage = Uri.parse(website);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+                    startActivity(intent);
+                }
+                catch(ActivityNotFoundException exe)
+                {
+                    Log.e("RGR_ERR", exe.getMessage());
+                    Toast.makeText(getActivity(), "Unable to open registration link", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         companySkills.setText(companyModel.getSkills());
-        stipend.setText(String.valueOf(companyModel.getStipend()));
+        stipend.setText("Rs. " + companyModel.getStipend());
         perks_offered.setText(companyModel.getPerks());
         companyImage.setImageBitmap(companyModel.getLogoBmp());
+        return v;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+}
+
 
 //        final String mTitle = shpref.getString("iTitle", "");
 //        String mSkills = shpref.getString("iSkills", "");
@@ -271,10 +306,7 @@ public class InternshipDetails extends Fragment {
         //      actionBar.setTitle(mTitle);
 //        companyTitle.setText(mTitle);
 //        companyDesc.setText(mDesc);
-        return v;
-    }
 
-    private void setCompanyData() {
 
-    }
-}
+
+

@@ -77,11 +77,11 @@ public class InternshipDetails extends Fragment {
         companyTitle.setText(companyModel.getName());
         companyDesc.setText(companyModel.getCompanyDescription());
         job_desc.setText(companyModel.getJobDescription());
-        companyWebsite.setText(companyModel.getUrl());
+        companyWebsite.setText(companyModel.getWebsiteUrl());
         companySkills.setText(companyModel.getSkills());
-        stipend.setText(companyModel.getStipend());
+        stipend.setText(String.valueOf(companyModel.getStipend()));
         perks_offered.setText(companyModel.getPerks());
-        companyImage.setImageResource(Integer.parseInt(String.valueOf(companyModel.getLogoBmp())));
+        companyImage.setImageBitmap(companyModel.getLogoBmp());
 
 //        final String mTitle = shpref.getString("iTitle", "");
 //        String mSkills = shpref.getString("iSkills", "");

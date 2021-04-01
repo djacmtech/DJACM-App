@@ -7,7 +7,7 @@ import android.os.Parcelable;
 public class InternshipCompanyModel
 {
 
-    private String skills,cmpDescription,jobDescription,name,url,perks;
+    private String skills,cmpDescription,jobDescription,name,url,perks,websiteUrl;
     private Bitmap logoBmp;
     private int stipend;
 
@@ -15,7 +15,9 @@ public class InternshipCompanyModel
 
     }
 
-    public InternshipCompanyModel(String skills, String cmpDescription, String name, String url, String jobDescription, String perks, int stipend) {
+    public InternshipCompanyModel(String skills, String cmpDescription, String name, String url, String jobDescription, String perks, int stipend,
+                                  String websiteUrl)
+    {
         this.skills = skills;
         this.cmpDescription = cmpDescription;
         this.name = name;
@@ -23,6 +25,7 @@ public class InternshipCompanyModel
         this.jobDescription = jobDescription;
         this.perks = perks;
         this.stipend = stipend;
+        this.websiteUrl = websiteUrl;
     }
 
     public InternshipCompanyModel(String skills, String name) {
@@ -104,5 +107,13 @@ public class InternshipCompanyModel
 
     public void setStipend(int stipend) {
         this.stipend = stipend;
+    }
+
+    public String getWebsiteUrl() {
+        return websiteUrl;
+    }
+
+    public void setWebsiteUrl(String websiteUrl) {
+        this.websiteUrl = websiteUrl;
     }
 }

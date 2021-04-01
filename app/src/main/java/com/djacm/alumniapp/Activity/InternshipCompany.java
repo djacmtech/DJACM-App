@@ -125,12 +125,23 @@ public class InternshipCompany extends Fragment
         super.onStart();
 
         //Setting the default tab
-        loadTechCompanies();
+        if(BaseActivity.isTech)
+        {
+            loadTechCompanies();
+            ((TabLayout)getView().findViewById(R.id.IF_companies_tab)).getTabAt(0).select();
+        }
+        else
+        {
+            loadNonTechCompanies();
+            ((TabLayout)getView().findViewById(R.id.IF_companies_tab)).getTabAt(1).select();
+        }
     }
 
     private void loadTechCompanies()
     {
         /*Loads and displays the list of tech companies*/
+
+        BaseActivity.isTech = true;
 
         if(BaseActivity.techCompanies.size() != 0)
         {
@@ -178,6 +189,8 @@ public class InternshipCompany extends Fragment
     private void loadNonTechCompanies()
     {
         /*Loads and displays the list of non-tech companies*/
+
+        BaseActivity.isTech = false;
 
         if(BaseActivity.nonTechCompanies.size() != 0)
         {

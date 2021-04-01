@@ -47,6 +47,7 @@ public class BaseActivity extends AppCompatActivity {
     public static ArrayList<InternshipCompanyModel> techCompanies = new ArrayList<>(); //The IF tech companies
     public static ArrayList<InternshipCompanyModel> nonTechCompanies = new ArrayList<>(); //The IF non-tech companies
     public static int currIFCompanyPos = 0;
+    public static boolean isTech = true; //Whether the current IF list if for tech companies
 
     public void setActivity(Activity a) {
         activity = a;

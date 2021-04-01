@@ -1,18 +1,23 @@
 package com.djacm.alumniapp;
 
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.djacm.alumniapp.Adapters.StudentViewPagerAdaptor;
@@ -41,7 +46,7 @@ public class IF_Fragment extends Fragment
     }
    private ImageView if_imageView;
    private TextView if_info1,if_info2;
-    private Button goto_company_list_bt,register_if;
+    private String registrationLink;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,8 +57,6 @@ public class IF_Fragment extends Fragment
         if_imageView = v.findViewById(R.id.if_image);
         if_info1 = v.findViewById(R.id.if_info1);
         if_info2 = v.findViewById(R.id.if_info2);
-        goto_company_list_bt = v.findViewById(R.id.gotocompanyList_bt);
-        register_if = v.findViewById(R.id.registerIF_bt);
         getIFInformation();
 
         AppCompatButton companyListBtn = v.findViewById(R.id.gotocompanyList_bt);
@@ -68,6 +71,26 @@ public class IF_Fragment extends Fragment
             }
         });
 
+        AppCompatButton registerBtn = v.findViewById(R.id.registerIF_bt);
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                try
+                {
+                    Uri webpage = Uri.parse(registrationLink);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+                    startActivity(intent);
+                }
+                catch(ActivityNotFoundException exe)
+                {
+                    Log.e("RGR_ERR", exe.getMessage());
+                    Toast.makeText(getActivity(), "Unable to open registration link", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
         return v;
     }
 
@@ -79,6 +102,7 @@ public class IF_Fragment extends Fragment
                 String IF_info1_string = dataSnapshot.child("ifInfo1").getValue().toString();
                 String IF_info2_string = dataSnapshot.child("ifInfo2").getValue().toString();
                 String IF_imageuri = dataSnapshot.child("ifImage").getValue().toString();
+                registrationLink = dataSnapshot.child("RegistrationLink").getValue().toString();
                 if(getActivity()!=null){
                     Glide.with(getActivity()).load(IF_imageuri).into(if_imageView);
                 }

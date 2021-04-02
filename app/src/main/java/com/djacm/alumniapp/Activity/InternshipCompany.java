@@ -168,7 +168,7 @@ public class InternshipCompany extends Fragment
                             snapshot.child("LogoUrl").getValue().toString(),
                             snapshot.child("JobDscr").getValue().toString(),
                             snapshot.child("Perks").getValue().toString(),
-                            Integer.parseInt(snapshot.child("Stipend").getValue().toString()),
+                            snapshot.child("Stipend").getValue().toString(),
                             snapshot.child("WebsiteUrl").getValue().toString().trim(),
                             snapshot.child("Domain").getValue().toString()));
                 }
@@ -213,7 +213,7 @@ public class InternshipCompany extends Fragment
                 {
                     companiesAdapter.models.add(new InternshipCompanyModel(snapshot.child("Skills").getValue().toString(), snapshot.child("CmpDscr").getValue().toString(),snapshot.child("Name").getValue().toString(),
                             snapshot.child("LogoUrl").getValue().toString(),snapshot.child("JobDscr").getValue().toString(),snapshot.child("Perks").getValue().toString(),
-                            Integer.parseInt(snapshot.child("Stipend").getValue().toString()),snapshot.child("WebsiteUrl").getValue().toString().trim(),
+                            snapshot.child("Stipend").getValue().toString(),snapshot.child("WebsiteUrl").getValue().toString().trim(),
                             snapshot.child("Domain").getValue().toString()));
                 }
 

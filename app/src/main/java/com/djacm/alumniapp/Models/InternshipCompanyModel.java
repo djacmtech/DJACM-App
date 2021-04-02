@@ -7,15 +7,14 @@ import android.os.Parcelable;
 public class InternshipCompanyModel
 {
 
-    private String skills,cmpDescription,jobDescription,name,url,perks,websiteUrl,domain;
+    private String skills,cmpDescription,jobDescription,name,url,perks,websiteUrl,domain,stipend;
     private Bitmap logoBmp;
-    private int stipend;
 
     public InternshipCompanyModel(){
 
     }
 
-    public InternshipCompanyModel(String skills, String cmpDescription, String name, String url, String jobDescription, String perks, int stipend,
+    public InternshipCompanyModel(String skills, String cmpDescription, String name, String url, String jobDescription, String perks, String stipend,
                                   String websiteUrl,String domain)
     {
         this.skills = skills;
@@ -32,17 +31,6 @@ public class InternshipCompanyModel
     public InternshipCompanyModel(String skills, String name) {
         this.skills = skills;
         this.name = name;
-    }
-
-    protected InternshipCompanyModel(Parcel in) {
-        skills = in.readString();
-        cmpDescription = in.readString();
-        jobDescription = in.readString();
-        name = in.readString();
-        url = in.readString();
-        perks = in.readString();
-        logoBmp = in.readParcelable(Bitmap.class.getClassLoader());
-        stipend = in.readInt();
     }
 
     public String getSkills() {
@@ -102,11 +90,11 @@ public class InternshipCompanyModel
         this.perks = perks;
     }
 
-    public int getStipend() {
+    public String getStipend() {
         return stipend;
     }
 
-    public void setStipend(int stipend) {
+    public void setStipend(String stipend) {
         this.stipend = stipend;
     }
 

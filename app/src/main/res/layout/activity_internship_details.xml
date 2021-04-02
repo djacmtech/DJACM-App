@@ -33,15 +33,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/alegreya_bold"
+                android:fontFamily="@font/roboto_slab_bold"
                 android:text="Company Name"
                 android:textColor="#fff"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textSize="28sp" />
             <TextView
                 android:layout_width="match_parent"
-                android:text="Company Webiste"
+                android:text="Company Website"
                 android:layout_margin="4dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/alegreya_bold"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -49,10 +50,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:textStyle="italic"
                 android:clickable="true"
                 android:text="company website tv"
                 android:textColor="#3CF7FB"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -60,7 +62,7 @@
                 android:layout_margin="4dp"
                 android:fontFamily="@font/alegreya_bold"
                 android:text="Company Description"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/company_desc"
@@ -69,14 +71,14 @@
                 android:layout_margin="4dp"
                 android:textStyle="italic"
                 android:text="Company Description TV"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:fontFamily="@font/alegreya_bold"
                 android:text="Job Description"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/job_desc"
@@ -85,14 +87,14 @@
                 android:layout_margin="4dp"
                 android:textStyle="italic"
                 android:text="Job Description tv"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:fontFamily="@font/alegreya_bold"
                 android:text="Skills Required"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/company_skill"
@@ -101,14 +103,14 @@
                 android:layout_margin="4dp"
                 android:textStyle="italic"
                 android:text="Skills TV"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:text="Stipend"
                 android:fontFamily="@font/alegreya_bold"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/stipend"
@@ -117,14 +119,14 @@
                 android:layout_margin="4dp"
                 android:textStyle="italic"
                 android:text="stipend tv "
-                android:textSize="14sp" />
+                android:textSize="16sp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:text="Perks offered"
                 android:fontFamily="@font/alegreya_bold"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/perks_offered"
@@ -133,7 +135,7 @@
                 android:layout_margin="4dp"
                 android:textStyle="italic"
                 android:text="perks offered tv "
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
 
         </LinearLayout>

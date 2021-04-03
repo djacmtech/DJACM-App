@@ -105,25 +105,13 @@
                                 android:text="description"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:orientation="horizontal"
+                                android:orientation="vertical"
                                 android:layout_marginTop="4dp"
                                 android:layout_height="wrap_content">
 
-                            <Button
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="28dp"
-                                android:textSize="11sp"
-                                android:id="@+id/event_register_button"
-                                android:textColor="#fff"
-                                android:layout_margin="4dp"
-                                android:background="@drawable/qs_button_shape"
-                                android:text="Register Now!"
-                                android:textAllCaps="false"
-                                />
                                 <Button
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_gravity="center_horizontal"
                                     android:textSize="11sp"
                                     android:textColor="#fff"
                                     android:id="@+id/upcoming_events_knowmore"
@@ -537,6 +525,20 @@
     </ScrollView>
 
 </LinearLayout>
+
+<!--
+<Button
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="28dp"
+                                android:textSize="11sp"
+                                android:id="@+id/event_register_button"
+                                android:textColor="#fff"
+                                android:layout_margin="4dp"
+                                android:background="@drawable/qs_button_shape"
+                                android:text="Register Now!"
+                                android:textAllCaps="false"
+                                />-->
 
     <!--    <LinearLayout-->
     <!--        android:layout_centerInParent="true"-->

@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.djacm.alumniapp.Activity.BaseActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -72,7 +73,7 @@ public class HomeFragment extends Fragment {
         mission_para4 = v.findViewById(R.id.mission_para4);
         mission_para5 = v.findViewById(R.id.mission_para5);
         knowmore = v.findViewById(R.id.upcoming_events_knowmore);
-        eventregister = v.findViewById(R.id.event_register_button);
+        //eventregister = v.findViewById(R.id.event_register_button);
         event_cardview = v.findViewById(R.id.event_cardview);
         upcomingEventCardLayout = v.findViewById(R.id.upcoming_events);
         roundno1 = v.findViewById(R.id.roundno1);
@@ -85,19 +86,20 @@ public class HomeFragment extends Fragment {
         status_ongoing = v.findViewById(R.id.round_status_ongoing);
         codebash_img = v.findViewById(R.id.codebash_img);
 
-        eventregister.setOnClickListener(new View.OnClickListener() {
+        /*eventregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(Intent.ACTION_VIEW,event_link);
                 startActivity(intent);
             }
-        });
+        });*/
 
         knowmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), UpcomingEventKnowMore.class));
+                //startActivity(new Intent(getActivity(), UpcomingEventKnowMore.class));
+                ((BaseActivity)getActivity()).viewPager.setCurrentItem(4);
             }
         });
 

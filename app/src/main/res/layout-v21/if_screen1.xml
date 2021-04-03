@@ -112,26 +112,15 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
-                                android:orientation="horizontal">
+                                android:orientation="vertical">
 
-                                <Button
-                                    android:id="@+id/event_register_button"
-                                    android:layout_width="0dp"
-                                    android:layout_height="28dp"
-                                    android:layout_margin="4dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/qs_button_shape"
-                                    android:text="Register Now!"
-                                    android:textAllCaps="false"
-                                    android:textColor="#fff"
-                                    android:textSize="11sp" />
 
                                 <Button
                                     android:id="@+id/upcoming_events_knowmore"
-                                    android:layout_width="0dp"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="28dp"
                                     android:layout_margin="4dp"
-                                    android:layout_weight="1"
+                                    android:layout_gravity="center_horizontal"
                                     android:background="@drawable/qs_button_shape"
                                     android:text="Know More"
                                     android:textAllCaps="false"
@@ -451,3 +440,17 @@
     </ScrollView>
 
 </LinearLayout>
+
+<!--
+<Button
+                                    android:id="@+id/event_register_button"
+                                    android:layout_width="0dp"
+                                    android:layout_height="28dp"
+                                    android:layout_margin="4dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/qs_button_shape"
+                                    android:text="Register Now!"
+                                    android:textAllCaps="false"
+                                    android:textColor="#fff"
+                                    android:textSize="11sp" />
+-->

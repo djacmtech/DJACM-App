@@ -56,7 +56,7 @@ public class IF_Fragment extends Fragment
 
         if_imageView = v.findViewById(R.id.if_image);
         if_info1 = v.findViewById(R.id.if_info1);
-        if_info2 = v.findViewById(R.id.if_info2);
+        //if_info2 = v.findViewById(R.id.if_info2);
         getIFInformation();
 
         AppCompatButton companyListBtn = v.findViewById(R.id.gotocompanyList_bt);
@@ -99,15 +99,15 @@ public class IF_Fragment extends Fragment
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String IF_info1_string = dataSnapshot.child("ifInfo1").getValue().toString();
-                String IF_info2_string = dataSnapshot.child("ifInfo2").getValue().toString();
+                String IF_info1_string = dataSnapshot.child("ifInfo1").getValue().toString().replace("\\n", "\n");
+                //String IF_info2_string = dataSnapshot.child("ifInfo2").getValue().toString().replace("\\n","\n");
                 String IF_imageuri = dataSnapshot.child("ifImage").getValue().toString();
                 registrationLink = dataSnapshot.child("RegistrationLink").getValue().toString();
                 if(getActivity()!=null){
                     Glide.with(getActivity()).load(IF_imageuri).into(if_imageView);
                 }
-                if_info1.setText(IF_info1_string.replaceAll("\n","\n"));
-                if_info2.setText(IF_info2_string.replaceAll("\n","\n"));
+                if_info1.setText(IF_info1_string);
+                //if_info2.setText(IF_info2_string);
 
             }
 

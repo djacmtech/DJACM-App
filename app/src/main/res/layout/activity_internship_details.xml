@@ -18,6 +18,8 @@
             android:layout_height="125dp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
+            android:background="@color/White"
+            android:padding="8dp"
             android:src="@mipmap/ic_launcher1_round" />
 
         <LinearLayout

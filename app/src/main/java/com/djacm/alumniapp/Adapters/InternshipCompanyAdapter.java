@@ -123,7 +123,7 @@ public class InternshipCompanyAdapter extends RecyclerView.Adapter<InternshipHol
             targets.put(picassoTarget, new Object[]{models.get(i), Integer.valueOf(i),internshipHolder.mLogo});
 
             //Displaying default pic while image loads
-            internshipHolder.mLogo.setImageResource(R.drawable.default_committee_profile_pic);
+            internshipHolder.mLogo.setImageResource(R.drawable.if_company_default_icon);
         }
         else {
             internshipHolder.mLogo.setImageBitmap(models.get(i).getLogoBmp());

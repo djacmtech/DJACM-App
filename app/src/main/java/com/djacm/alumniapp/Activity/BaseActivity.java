@@ -35,7 +35,7 @@ import java.util.HashMap;
 public class BaseActivity extends AppCompatActivity {
     BottomNavigationView navigation;
     public static int itemID;
-    ViewPager viewPager;
+    public ViewPager viewPager;
     Activity activity;
     MenuItem prevMenuItem;
     StudentViewPagerAdaptor adapter;

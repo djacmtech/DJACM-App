@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../Android%20SDK/icons/material/materialicons/event/baseline_event_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../Android%20SDK/icons/material/materialicons/corporate_fare/baseline_corporate_fare_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,8 +33,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="bottomnav_event" />
+                            <entry key="outputName" value="if_company_default_icon" />
                             <entry key="sourceFile" value="E:\Android Studio\Projects\DJACM-App\app\src\main\res\drawable\alumni.svg" />
                           </map>
                         </option>
